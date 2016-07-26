@@ -1,0 +1,6 @@
+# ignore agda files
+*.agdai
+
+# ignore emacs files
+*.agda~
+
