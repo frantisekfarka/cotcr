@@ -30,6 +30,29 @@ toPrg x = record { prg = f x }
     f · = []
     f (y , x₁ ∷ ch ⟦ wCh ⟧) = (ch , wCh) ∷ f y
 
+extEnv : {n m l : ℕ }
+  {Σ : Signature n m} {var : Set}
+  {PTΣ : PTSignature l} {pVar : Set} →
+  AxEnv Σ var PTΣ pVar →
+  List (PTerm PTΣ pVar × P.Σ (CH Σ var) NoExistCH) →
+  AxEnv Σ var PTΣ pVar
+extEnv Φ [] = Φ
+extEnv Φ ((pt , ch , wCh) ∷ xs)
+  = extEnv (Φ , pt ∷ ch ⟦ wCh ⟧) xs
+
+open Program
+
+extPrg : {n m : ℕ }
+  {Σ : Signature n m} {var : Set} →
+  Program Σ var →
+  List (P.Σ (CH Σ var) NoExistCH) →
+  Program Σ var
+extPrg P chs = record { prg = foo (prg P) chs }
+  where
+    foo : ∀ {A} → List A → List A → List A
+    foo ps [] = ps
+    foo ps (ch ∷ chs) = ch ∷ (foo ps chs)
+
 module AxEnvAny where
   -- Any P xs means that at least one element in xs satisfies P.
 

@@ -121,6 +121,31 @@ record CHValid {n m : ℕ} {Σ : Signature n m} {var : Set}
       All (λ t → AtValid I (appA σ t)) (chB ch)
       → AtValid I (appA σ (chH ch))
 
+open AtValid
+open CHValid
+
+
+-- Shorthand for AxEnv
+-- @TODO  move to Res?
+_⊨'_ : ∀ {l m n} {Σ : Signature n m} → {var : Set}
+  {PTΣ : PTSignature l} → {pVar : Set} 
+
+  (Φ : AxEnv Σ var PTΣ pVar ) →
+  (A : CH Σ var) →
+  Set₁
+Φ ⊨' A = CHValid (fp (lfp (M (toPrg Φ)))) A
+
+-- Shorthand for Program
+-- @TODO  move to Res?
+_⊨''_ : ∀ {m n} {Σ : Signature n m} → {var : Set} →
+
+  (Φ : Program Σ var) →
+  (H : CH Σ var) →
+  Set₁
+Φ ⊨'' H = CHValid (fp (lfp (M Φ))) H
+
+
+
 
 open Program
 
@@ -141,3 +166,26 @@ postulate lemma-1-b-i : {n m : ℕ} {-
 -} All (λ Bᵢ → AtValid (fp (lfp (M P))) (appA σ Bᵢ)) Bs → {-
 -} Any  ( λ { (ch , wNECh) → ch ≡ (Bs CH.⇒ A) }) (prg P) → AtValid (fp (lfp (M P))) (appA σ A)
 
+
+--
+-- Lemma: P ⊨ A → ∀ σ, P ⊨ σA
+--
+postulate lemma-inst : {n m : ℕ} {-
+-} {Σ : Signature n m} {var : Set} {-
+-} {P : Program Σ var} {A : At Σ var} → {-
+-} AtValid (fp (lfp (M P))) A → {-
+-} (σ : Subst Σ var) → {- 
+-} AtValid (fp (lfp (M P))) (appA σ A)
+
+
+postulate lemma-atohc : {m n : ℕ} {-
+-} {Σ : Signature m n} {var : Set} {-
+-} {P : Program Σ var} {A : At Σ var} → {-
+-} AtValid (fp (lfp (M P))) A → {-
+-} CHValid (fp (lfp (M P))) ([] CH.⇒ A) 
+
+postulate lemma-chtoa : {m n : ℕ} {-
+-} {Σ : Signature m n} {var : Set} {-
+-} {P : Program Σ var} {A : At Σ var} → {-
+-} CHValid (fp (lfp (M P))) ([] CH.⇒ A) → {-
+-} AtValid (fp (lfp (M P))) (A) 
