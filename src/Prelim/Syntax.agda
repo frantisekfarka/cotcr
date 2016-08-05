@@ -26,7 +26,7 @@ data Term {i : Size}
    FNode : {j : Size< i} →
      (f : Fin n) → Vec (Term {j} Σ var) (arF Σ f)
      → Term {i} Σ var
-   VNode :  (v : var) → Term {i} Σ var
+   VNode : (v : var) → Term {i} Σ var
 
 -- | An atomic formula
 --
@@ -175,9 +175,9 @@ open Program
 
 -- omited for now
 
-record Subst {n m : ℕ} (Σ : Signature n m) (var : Set) : Set₁ where
+record Subst {i : Size} {n m : ℕ} (Σ : Signature n m) (var : Set) : Set₁ where
   field
-    subst : (var → Term Σ var)
+    subst : (var → Term {i} Σ var)
 open Subst
 
 record GSubst {n m : ℕ} (Σ : Signature n m) (var : Set) : Set₁ where
@@ -186,20 +186,29 @@ record GSubst {n m : ℕ} (Σ : Signature n m) (var : Set) : Set₁ where
     wGsubst : {x : var} →  Empty (fvT (subst gsubst x))
 open GSubst
 
-σ-id : {n m : ℕ} {Σ : Signature n m} {var : Set} →
-  Subst Σ var
+σ-id : {i : Size} {n m : ℕ} {Σ : Signature n m} {var : Set} →
+  Subst {i} Σ var
 σ-id = record { subst = λ x → VNode x }
 
 σ-const : {n m : ℕ} {Σ : Signature n m} {var : Set} →
   Term Σ var → Subst Σ var
 σ-const t = record { subst = λ x → t }
 
+open import Agda.Builtin.Size
+
 -- | substitution application
-app : {i : Size} →
-  {n m : ℕ} → {Σ : Signature n m} → {var : Set}
-  → Subst Σ var → Term {i} Σ var → Term Σ var
-app σ (FNode f fs) = FNode f (V.map (app σ) fs)
+app : {i j : Size} {n m : ℕ} → {Σ : Signature n m} → {var : Set}
+  → Subst {i} Σ var → Term {j} Σ var → Term Σ var
+app σ (FNode {k} f fs) = FNode f (V.map (app σ) fs) 
 app σ (VNode v) = subst σ v
+
+-- | substitution application
+app' : {i j :  Size}  →
+  {n m : ℕ} → {Σ : Signature n m} → {var : Set}
+  → Subst {i} Σ var → Term {j} Σ var → Term {i ⊔ˢ j} Σ var
+app' {i} {j} σ (FNode {k} f fs) = FNode f fs
+  -- FNode {k ⊔ˢ i} f (V.map (app {i} {k} σ) fs) 
+app' {i} {j} σ (VNode v) = subst σ v
 
 -- | ground substitution application
 gApp : {i : Size} →
