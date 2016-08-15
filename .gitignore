@@ -1,5 +1,6 @@
 # ignore agda files
 *.agdai
+MAlonzo
 
 # ignore emacs files
 *.agda~
