@@ -325,7 +325,7 @@ module TCResLam where
         {Σ : Signature n m} {var : Set}
         {PTΣ' : PTSignature l } {pVar : Set}
         {α : pVar} {A : At Σ var} →
-      · ⊢ λ' (α ∷ []) ∘ (PVNode {PTΣ = PTΣ'} α) ∷ ((A ∷ []) ⇒ A)
+        · ⊢ λ' (α ∷ []) ∘ (PVNode {PTΣ = PTΣ'} α) ∷ ((A ∷ []) ⇒ A)
     ex₆ {_} {α = α} {A = A} =
       Lam refl refl
         (Lp-m refl σ-id A (lemma-σ-id-atom A) [] refl [] (here refl))
