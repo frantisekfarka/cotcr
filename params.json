@@ -1,0 +1,6 @@
+{
+  "name": "CoTCR",
+  "tagline": "Formalisation of a proof of soundness of corecursive type-class resolution",
+  "body": "# Welcome to CoTCR\r\nThis is a formalisation of a proof of soundness of corecursive type-class resolution as in Farka _et al._ [1]\r\n\r\n## Documentation\r\nThe source code is documented in-line in comments, a [highlighted version](http://frantisekfark.gihub.io/cotcr/html) is provided.\r\n\r\n### Authors and Contributors\r\nJust @frantisekfarka for now.\r\n\r\n\r\n## References \r\n\r\n[1] ...\r\n\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
