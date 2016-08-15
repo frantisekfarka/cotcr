@@ -1,0 +1,2474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+><head
+  ><title
+    >Prelim.Res</title
+    ><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"
+     /><meta http-equiv="Content-Style-Type" content="text/css"
+     /><link href="Agda.css" rel="stylesheet" type="text/css"
+     /></head
+  ><body
+  ><pre
+    ><a name="1" class="Keyword"
+      >module</a
+      ><a name="7"
+      > </a
+      ><a name="8" href="Prelim.Res.html#1" class="Module"
+      >Prelim.Res</a
+      ><a name="18"
+      > </a
+      ><a name="19" class="Keyword"
+      >where</a
+      ><a name="24"
+      >
+
+</a
+      ><a name="26" class="Keyword"
+      >open</a
+      ><a name="30"
+      > </a
+      ><a name="31" class="Keyword"
+      >import</a
+      ><a name="37"
+      > </a
+      ><a name="38" href="Data.Nat.html#1" class="Module"
+      >Data.Nat</a
+      ><a name="46"
+      >
+</a
+      ><a name="47" class="Keyword"
+      >open</a
+      ><a name="51"
+      > </a
+      ><a name="52" class="Keyword"
+      >import</a
+      ><a name="58"
+      > </a
+      ><a name="59" href="Data.List.Any.html#1" class="Module"
+      >Data.List.Any</a
+      ><a name="72"
+      > </a
+      ><a name="73" class="Symbol"
+      >as</a
+      ><a name="75"
+      > </a
+      ><a name="76" class="Module"
+      >LAn</a
+      ><a name="79"
+      >
+
+</a
+      ><a name="81" class="Keyword"
+      >open</a
+      ><a name="85"
+      > </a
+      ><a name="86" class="Keyword"
+      >import</a
+      ><a name="92"
+      > </a
+      ><a name="93" href="Prelim.Syntax.html#1" class="Module"
+      >Prelim.Syntax</a
+      ><a name="106"
+      >
+
+</a
+      ><a name="108" class="Keyword"
+      >data</a
+      ><a name="112"
+      > </a
+      ><a name="113" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="118"
+      > </a
+      ><a name="119" class="Symbol"
+      >{</a
+      ><a name="120" href="Prelim.Res.html#120" class="Bound"
+      >n</a
+      ><a name="121"
+      > </a
+      ><a name="122" href="Prelim.Res.html#122" class="Bound"
+      >m</a
+      ><a name="123"
+      > </a
+      ><a name="124" href="Prelim.Res.html#124" class="Bound"
+      >l</a
+      ><a name="125"
+      > </a
+      ><a name="126" class="Symbol"
+      >:</a
+      ><a name="127"
+      > </a
+      ><a name="128" href="Agda.Builtin.Nat.html#69" class="Datatype"
+      >&#8469;</a
+      ><a name="129" class="Symbol"
+      >}</a
+      ><a name="130"
+      >
+  </a
+      ><a name="133" class="Symbol"
+      >(</a
+      ><a name="134" href="Prelim.Res.html#134" class="Bound"
+      >&#931;</a
+      ><a name="135"
+      > </a
+      ><a name="136" class="Symbol"
+      >:</a
+      ><a name="137"
+      > </a
+      ><a name="138" href="Prelim.Syntax.html#106" class="Record"
+      >Signature</a
+      ><a name="147"
+      > </a
+      ><a name="148" href="Prelim.Res.html#120" class="Bound"
+      >n</a
+      ><a name="149"
+      > </a
+      ><a name="150" href="Prelim.Res.html#122" class="Bound"
+      >m</a
+      ><a name="151" class="Symbol"
+      >)</a
+      ><a name="152"
+      > </a
+      ><a name="153" class="Symbol"
+      >(</a
+      ><a name="154" href="Prelim.Res.html#154" class="Bound"
+      >var</a
+      ><a name="157"
+      > </a
+      ><a name="158" class="Symbol"
+      >:</a
+      ><a name="159"
+      > </a
+      ><a name="160" class="PrimitiveType"
+      >Set</a
+      ><a name="163" class="Symbol"
+      >)</a
+      ><a name="164"
+      >
+  </a
+      ><a name="167" class="Symbol"
+      >(</a
+      ><a name="168" href="Prelim.Res.html#168" class="Bound"
+      >PT&#931;</a
+      ><a name="171"
+      > </a
+      ><a name="172" class="Symbol"
+      >:</a
+      ><a name="173"
+      > </a
+      ><a name="174" href="Prelim.Syntax.html#6461" class="Record"
+      >PTSignature</a
+      ><a name="185"
+      > </a
+      ><a name="186" href="Prelim.Res.html#124" class="Bound"
+      >l</a
+      ><a name="187" class="Symbol"
+      >)</a
+      ><a name="188"
+      > </a
+      ><a name="189" class="Symbol"
+      >(</a
+      ><a name="190" href="Prelim.Res.html#190" class="Bound"
+      >pVar</a
+      ><a name="194"
+      > </a
+      ><a name="195" class="Symbol"
+      >:</a
+      ><a name="196"
+      > </a
+      ><a name="197" class="PrimitiveType"
+      >Set</a
+      ><a name="200" class="Symbol"
+      >)</a
+      ><a name="201"
+      > </a
+      ><a name="202" class="Symbol"
+      >:</a
+      ><a name="203"
+      > </a
+      ><a name="204" class="PrimitiveType"
+      >Set</a
+      ><a name="207"
+      > </a
+      ><a name="208" class="Keyword"
+      >where</a
+      ><a name="213"
+      >
+
+  </a
+      ><a name="217" href="Prelim.Res.html#217" class="InductiveConstructor"
+      >&#183;</a
+      ><a name="218"
+      > </a
+      ><a name="219" class="Symbol"
+      >:</a
+      ><a name="220"
+      > </a
+      ><a name="221" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="226"
+      > </a
+      ><a name="227" href="Prelim.Res.html#134" class="Bound"
+      >&#931;</a
+      ><a name="228"
+      > </a
+      ><a name="229" href="Prelim.Res.html#154" class="Bound"
+      >var</a
+      ><a name="232"
+      > </a
+      ><a name="233" href="Prelim.Res.html#168" class="Bound"
+      >PT&#931;</a
+      ><a name="236"
+      > </a
+      ><a name="237" href="Prelim.Res.html#190" class="Bound"
+      >pVar</a
+      ><a name="241"
+      >
+  </a
+      ><a name="244" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >_,_&#8759;_&#10214;_&#10215;</a
+      ><a name="252"
+      >  </a
+      ><a name="254" class="Symbol"
+      >:</a
+      ><a name="255"
+      > </a
+      ><a name="256" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="261"
+      > </a
+      ><a name="262" href="Prelim.Res.html#134" class="Bound"
+      >&#931;</a
+      ><a name="263"
+      > </a
+      ><a name="264" href="Prelim.Res.html#154" class="Bound"
+      >var</a
+      ><a name="267"
+      > </a
+      ><a name="268" href="Prelim.Res.html#168" class="Bound"
+      >PT&#931;</a
+      ><a name="271"
+      > </a
+      ><a name="272" href="Prelim.Res.html#190" class="Bound"
+      >pVar</a
+      ><a name="276"
+      > </a
+      ><a name="277" class="Symbol"
+      >&#8594;</a
+      ><a name="278"
+      >
+    </a
+      ><a name="283" href="Prelim.Syntax.html#6593" class="Datatype"
+      >PTerm</a
+      ><a name="288"
+      > </a
+      ><a name="289" href="Prelim.Res.html#168" class="Bound"
+      >PT&#931;</a
+      ><a name="292"
+      > </a
+      ><a name="293" href="Prelim.Res.html#190" class="Bound"
+      >pVar</a
+      ><a name="297"
+      > </a
+      ><a name="298" class="Symbol"
+      >&#8594;</a
+      ><a name="299"
+      >
+    </a
+      ><a name="304" class="Symbol"
+      >(</a
+      ><a name="305" href="Prelim.Res.html#305" class="Bound"
+      >ch</a
+      ><a name="307"
+      > </a
+      ><a name="308" class="Symbol"
+      >:</a
+      ><a name="309"
+      > </a
+      ><a name="310" href="Prelim.Syntax.html#875" class="Datatype"
+      >CH</a
+      ><a name="312"
+      > </a
+      ><a name="313" href="Prelim.Res.html#134" class="Bound"
+      >&#931;</a
+      ><a name="314"
+      > </a
+      ><a name="315" href="Prelim.Res.html#154" class="Bound"
+      >var</a
+      ><a name="318" class="Symbol"
+      >)</a
+      ><a name="319"
+      > </a
+      ><a name="320" class="Symbol"
+      >&#8594;</a
+      ><a name="321"
+      >
+    </a
+      ><a name="326" href="Prelim.Syntax.html#1823" class="Record"
+      >NoExistCH</a
+      ><a name="335"
+      > </a
+      ><a name="336" href="Prelim.Res.html#305" class="Bound"
+      >ch</a
+      ><a name="338"
+      >  </a
+      ><a name="340" class="Symbol"
+      >&#8594;</a
+      ><a name="341"
+      >
+    </a
+      ><a name="346" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="351"
+      > </a
+      ><a name="352" href="Prelim.Res.html#134" class="Bound"
+      >&#931;</a
+      ><a name="353"
+      > </a
+      ><a name="354" href="Prelim.Res.html#154" class="Bound"
+      >var</a
+      ><a name="357"
+      > </a
+      ><a name="358" href="Prelim.Res.html#168" class="Bound"
+      >PT&#931;</a
+      ><a name="361"
+      > </a
+      ><a name="362" href="Prelim.Res.html#190" class="Bound"
+      >pVar</a
+      ><a name="366"
+      >
+
+</a
+      ><a name="368" class="Keyword"
+      >open</a
+      ><a name="372"
+      > </a
+      ><a name="373" class="Keyword"
+      >import</a
+      ><a name="379"
+      > </a
+      ><a name="380" href="Data.List.html#1" class="Module"
+      >Data.List</a
+      ><a name="389"
+      >
+</a
+      ><a name="390" class="Keyword"
+      >open</a
+      ><a name="394"
+      > </a
+      ><a name="395" class="Keyword"
+      >import</a
+      ><a name="401"
+      > </a
+      ><a name="402" href="Data.Product.html#1" class="Module"
+      >Data.Product</a
+      ><a name="414"
+      > </a
+      ><a name="415" class="Symbol"
+      >as</a
+      ><a name="417"
+      > </a
+      ><a name="418" class="Module"
+      >P</a
+      ><a name="419"
+      >
+
+</a
+      ><a name="421" href="Prelim.Res.html#421" class="Function"
+      >toPrg</a
+      ><a name="426"
+      > </a
+      ><a name="427" class="Symbol"
+      >:</a
+      ><a name="428"
+      > </a
+      ><a name="429" class="Symbol"
+      >{</a
+      ><a name="430" href="Prelim.Res.html#430" class="Bound"
+      >n</a
+      ><a name="431"
+      > </a
+      ><a name="432" href="Prelim.Res.html#432" class="Bound"
+      >m</a
+      ><a name="433"
+      > </a
+      ><a name="434" href="Prelim.Res.html#434" class="Bound"
+      >l</a
+      ><a name="435"
+      > </a
+      ><a name="436" class="Symbol"
+      >:</a
+      ><a name="437"
+      > </a
+      ><a name="438" href="Agda.Builtin.Nat.html#69" class="Datatype"
+      >&#8469;</a
+      ><a name="439"
+      > </a
+      ><a name="440" class="Symbol"
+      >}</a
+      ><a name="441"
+      >
+  </a
+      ><a name="444" class="Symbol"
+      >{</a
+      ><a name="445" href="Prelim.Res.html#445" class="Bound"
+      >&#931;</a
+      ><a name="446"
+      > </a
+      ><a name="447" class="Symbol"
+      >:</a
+      ><a name="448"
+      > </a
+      ><a name="449" href="Prelim.Syntax.html#106" class="Record"
+      >Signature</a
+      ><a name="458"
+      > </a
+      ><a name="459" href="Prelim.Res.html#430" class="Bound"
+      >n</a
+      ><a name="460"
+      > </a
+      ><a name="461" href="Prelim.Res.html#432" class="Bound"
+      >m</a
+      ><a name="462" class="Symbol"
+      >}</a
+      ><a name="463"
+      > </a
+      ><a name="464" class="Symbol"
+      >{</a
+      ><a name="465" href="Prelim.Res.html#465" class="Bound"
+      >var</a
+      ><a name="468"
+      > </a
+      ><a name="469" class="Symbol"
+      >:</a
+      ><a name="470"
+      > </a
+      ><a name="471" class="PrimitiveType"
+      >Set</a
+      ><a name="474" class="Symbol"
+      >}</a
+      ><a name="475"
+      >
+  </a
+      ><a name="478" class="Symbol"
+      >{</a
+      ><a name="479" href="Prelim.Res.html#479" class="Bound"
+      >PT&#931;</a
+      ><a name="482"
+      > </a
+      ><a name="483" class="Symbol"
+      >:</a
+      ><a name="484"
+      > </a
+      ><a name="485" href="Prelim.Syntax.html#6461" class="Record"
+      >PTSignature</a
+      ><a name="496"
+      > </a
+      ><a name="497" href="Prelim.Res.html#434" class="Bound"
+      >l</a
+      ><a name="498" class="Symbol"
+      >}</a
+      ><a name="499"
+      > </a
+      ><a name="500" class="Symbol"
+      >{</a
+      ><a name="501" href="Prelim.Res.html#501" class="Bound"
+      >pVar</a
+      ><a name="505"
+      > </a
+      ><a name="506" class="Symbol"
+      >:</a
+      ><a name="507"
+      > </a
+      ><a name="508" class="PrimitiveType"
+      >Set</a
+      ><a name="511" class="Symbol"
+      >}</a
+      ><a name="512"
+      > </a
+      ><a name="513" class="Symbol"
+      >&#8594;</a
+      ><a name="514"
+      >
+  </a
+      ><a name="517" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="522"
+      > </a
+      ><a name="523" href="Prelim.Res.html#445" class="Bound"
+      >&#931;</a
+      ><a name="524"
+      > </a
+      ><a name="525" href="Prelim.Res.html#465" class="Bound"
+      >var</a
+      ><a name="528"
+      > </a
+      ><a name="529" href="Prelim.Res.html#479" class="Bound"
+      >PT&#931;</a
+      ><a name="532"
+      > </a
+      ><a name="533" href="Prelim.Res.html#501" class="Bound"
+      >pVar</a
+      ><a name="537"
+      > </a
+      ><a name="538" class="Symbol"
+      >&#8594;</a
+      ><a name="539"
+      > </a
+      ><a name="540" href="Prelim.Syntax.html#4111" class="Record"
+      >Program</a
+      ><a name="547"
+      > </a
+      ><a name="548" href="Prelim.Res.html#445" class="Bound"
+      >&#931;</a
+      ><a name="549"
+      > </a
+      ><a name="550" href="Prelim.Res.html#465" class="Bound"
+      >var</a
+      ><a name="553"
+      >
+</a
+      ><a name="554" href="Prelim.Res.html#421" class="Function"
+      >toPrg</a
+      ><a name="559"
+      > </a
+      ><a name="560" href="Prelim.Res.html#560" class="Bound"
+      >x</a
+      ><a name="561"
+      > </a
+      ><a name="562" class="Symbol"
+      >=</a
+      ><a name="563"
+      > </a
+      ><a name="564" class="Keyword"
+      >record</a
+      ><a name="570"
+      > </a
+      ><a name="571" class="Symbol"
+      >{</a
+      ><a name="572"
+      > </a
+      ><a name="573" class="Field"
+      >prg</a
+      ><a name="576"
+      > </a
+      ><a name="577" class="Symbol"
+      >=</a
+      ><a name="578"
+      > </a
+      ><a name="579" href="Prelim.Res.html#597" class="Function"
+      >f</a
+      ><a name="580"
+      > </a
+      ><a name="581" href="Prelim.Res.html#560" class="Bound"
+      >x</a
+      ><a name="582"
+      > </a
+      ><a name="583" class="Symbol"
+      >}</a
+      ><a name="584"
+      >
+  </a
+      ><a name="587" class="Keyword"
+      >where</a
+      ><a name="592"
+      >
+    </a
+      ><a name="597" href="Prelim.Res.html#597" class="Function"
+      >f</a
+      ><a name="598"
+      > </a
+      ><a name="599" class="Symbol"
+      >:</a
+      ><a name="600"
+      > </a
+      ><a name="601" class="Symbol"
+      >&#8704;</a
+      ><a name="602"
+      > </a
+      ><a name="603" class="Symbol"
+      >{</a
+      ><a name="604" href="Prelim.Res.html#604" class="Bound"
+      >&#931;</a
+      ><a name="605"
+      > </a
+      ><a name="606" href="Prelim.Res.html#606" class="Bound"
+      >var</a
+      ><a name="609"
+      > </a
+      ><a name="610" href="Prelim.Res.html#610" class="Bound"
+      >PT&#931;</a
+      ><a name="613"
+      > </a
+      ><a name="614" href="Prelim.Res.html#614" class="Bound"
+      >pVar</a
+      ><a name="618" class="Symbol"
+      >}</a
+      ><a name="619"
+      > </a
+      ><a name="620" class="Symbol"
+      >&#8594;</a
+      ><a name="621"
+      > </a
+      ><a name="622" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="627"
+      > </a
+      ><a name="628" href="Prelim.Res.html#604" class="Bound"
+      >&#931;</a
+      ><a name="629"
+      > </a
+      ><a name="630" href="Prelim.Res.html#606" class="Bound"
+      >var</a
+      ><a name="633"
+      > </a
+      ><a name="634" href="Prelim.Res.html#610" class="Bound"
+      >PT&#931;</a
+      ><a name="637"
+      > </a
+      ><a name="638" href="Prelim.Res.html#614" class="Bound"
+      >pVar</a
+      ><a name="642"
+      >
+      </a
+      ><a name="649" class="Symbol"
+      >&#8594;</a
+      ><a name="650"
+      > </a
+      ><a name="651" href="Agda.Builtin.List.html#52" class="Datatype"
+      >List</a
+      ><a name="655"
+      > </a
+      ><a name="656" class="Symbol"
+      >(</a
+      ><a name="657" href="Data.Product.html#439" class="Record"
+      >P.&#931;</a
+      ><a name="660"
+      > </a
+      ><a name="661" class="Symbol"
+      >(</a
+      ><a name="662" href="Prelim.Syntax.html#875" class="Datatype"
+      >CH</a
+      ><a name="664"
+      > </a
+      ><a name="665" href="Prelim.Res.html#604" class="Bound"
+      >&#931;</a
+      ><a name="666"
+      > </a
+      ><a name="667" href="Prelim.Res.html#606" class="Bound"
+      >var</a
+      ><a name="670" class="Symbol"
+      >)</a
+      ><a name="671"
+      > </a
+      ><a name="672" class="Symbol"
+      >(&#955;</a
+      ><a name="674"
+      > </a
+      ><a name="675" href="Prelim.Res.html#675" class="Bound"
+      >x&#8321;</a
+      ><a name="677"
+      > </a
+      ><a name="678" class="Symbol"
+      >&#8594;</a
+      ><a name="679"
+      > </a
+      ><a name="680" href="Prelim.Syntax.html#1823" class="Record"
+      >NoExistCH</a
+      ><a name="689"
+      > </a
+      ><a name="690" href="Prelim.Res.html#675" class="Bound"
+      >x&#8321;</a
+      ><a name="692" class="Symbol"
+      >))</a
+      ><a name="694"
+      >
+    </a
+      ><a name="699" href="Prelim.Res.html#597" class="Function"
+      >f</a
+      ><a name="700"
+      > </a
+      ><a name="701" href="Prelim.Res.html#217" class="InductiveConstructor"
+      >&#183;</a
+      ><a name="702"
+      > </a
+      ><a name="703" class="Symbol"
+      >=</a
+      ><a name="704"
+      > </a
+      ><a name="705" href="Agda.Builtin.List.html#89" class="InductiveConstructor"
+      >[]</a
+      ><a name="707"
+      >
+    </a
+      ><a name="712" href="Prelim.Res.html#597" class="Function"
+      >f</a
+      ><a name="713"
+      > </a
+      ><a name="714" class="Symbol"
+      >(</a
+      ><a name="715" href="Prelim.Res.html#715" class="Bound"
+      >y</a
+      ><a name="716"
+      > </a
+      ><a name="717" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="718"
+      > </a
+      ><a name="719" href="Prelim.Res.html#719" class="Bound"
+      >x&#8321;</a
+      ><a name="721"
+      > </a
+      ><a name="722" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="723"
+      > </a
+      ><a name="724" href="Prelim.Res.html#724" class="Bound"
+      >ch</a
+      ><a name="726"
+      > </a
+      ><a name="727" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#10214;</a
+      ><a name="728"
+      > </a
+      ><a name="729" href="Prelim.Res.html#729" class="Bound"
+      >wCh</a
+      ><a name="732"
+      > </a
+      ><a name="733" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#10215;</a
+      ><a name="734" class="Symbol"
+      >)</a
+      ><a name="735"
+      > </a
+      ><a name="736" class="Symbol"
+      >=</a
+      ><a name="737"
+      > </a
+      ><a name="738" class="Symbol"
+      >(</a
+      ><a name="739" href="Prelim.Res.html#724" class="Bound"
+      >ch</a
+      ><a name="741"
+      > </a
+      ><a name="742" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="743"
+      > </a
+      ><a name="744" href="Prelim.Res.html#729" class="Bound"
+      >wCh</a
+      ><a name="747" class="Symbol"
+      >)</a
+      ><a name="748"
+      > </a
+      ><a name="749" href="Agda.Builtin.List.html#104" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="750"
+      > </a
+      ><a name="751" href="Prelim.Res.html#597" class="Function"
+      >f</a
+      ><a name="752"
+      > </a
+      ><a name="753" href="Prelim.Res.html#715" class="Bound"
+      >y</a
+      ><a name="754"
+      >
+
+</a
+      ><a name="756" href="Prelim.Res.html#756" class="Function"
+      >extEnv</a
+      ><a name="762"
+      > </a
+      ><a name="763" class="Symbol"
+      >:</a
+      ><a name="764"
+      > </a
+      ><a name="765" class="Symbol"
+      >{</a
+      ><a name="766" href="Prelim.Res.html#766" class="Bound"
+      >n</a
+      ><a name="767"
+      > </a
+      ><a name="768" href="Prelim.Res.html#768" class="Bound"
+      >m</a
+      ><a name="769"
+      > </a
+      ><a name="770" href="Prelim.Res.html#770" class="Bound"
+      >l</a
+      ><a name="771"
+      > </a
+      ><a name="772" class="Symbol"
+      >:</a
+      ><a name="773"
+      > </a
+      ><a name="774" href="Agda.Builtin.Nat.html#69" class="Datatype"
+      >&#8469;</a
+      ><a name="775"
+      > </a
+      ><a name="776" class="Symbol"
+      >}</a
+      ><a name="777"
+      >
+  </a
+      ><a name="780" class="Symbol"
+      >{</a
+      ><a name="781" href="Prelim.Res.html#781" class="Bound"
+      >&#931;</a
+      ><a name="782"
+      > </a
+      ><a name="783" class="Symbol"
+      >:</a
+      ><a name="784"
+      > </a
+      ><a name="785" href="Prelim.Syntax.html#106" class="Record"
+      >Signature</a
+      ><a name="794"
+      > </a
+      ><a name="795" href="Prelim.Res.html#766" class="Bound"
+      >n</a
+      ><a name="796"
+      > </a
+      ><a name="797" href="Prelim.Res.html#768" class="Bound"
+      >m</a
+      ><a name="798" class="Symbol"
+      >}</a
+      ><a name="799"
+      > </a
+      ><a name="800" class="Symbol"
+      >{</a
+      ><a name="801" href="Prelim.Res.html#801" class="Bound"
+      >var</a
+      ><a name="804"
+      > </a
+      ><a name="805" class="Symbol"
+      >:</a
+      ><a name="806"
+      > </a
+      ><a name="807" class="PrimitiveType"
+      >Set</a
+      ><a name="810" class="Symbol"
+      >}</a
+      ><a name="811"
+      >
+  </a
+      ><a name="814" class="Symbol"
+      >{</a
+      ><a name="815" href="Prelim.Res.html#815" class="Bound"
+      >PT&#931;</a
+      ><a name="818"
+      > </a
+      ><a name="819" class="Symbol"
+      >:</a
+      ><a name="820"
+      > </a
+      ><a name="821" href="Prelim.Syntax.html#6461" class="Record"
+      >PTSignature</a
+      ><a name="832"
+      > </a
+      ><a name="833" href="Prelim.Res.html#770" class="Bound"
+      >l</a
+      ><a name="834" class="Symbol"
+      >}</a
+      ><a name="835"
+      > </a
+      ><a name="836" class="Symbol"
+      >{</a
+      ><a name="837" href="Prelim.Res.html#837" class="Bound"
+      >pVar</a
+      ><a name="841"
+      > </a
+      ><a name="842" class="Symbol"
+      >:</a
+      ><a name="843"
+      > </a
+      ><a name="844" class="PrimitiveType"
+      >Set</a
+      ><a name="847" class="Symbol"
+      >}</a
+      ><a name="848"
+      > </a
+      ><a name="849" class="Symbol"
+      >&#8594;</a
+      ><a name="850"
+      >
+  </a
+      ><a name="853" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="858"
+      > </a
+      ><a name="859" href="Prelim.Res.html#781" class="Bound"
+      >&#931;</a
+      ><a name="860"
+      > </a
+      ><a name="861" href="Prelim.Res.html#801" class="Bound"
+      >var</a
+      ><a name="864"
+      > </a
+      ><a name="865" href="Prelim.Res.html#815" class="Bound"
+      >PT&#931;</a
+      ><a name="868"
+      > </a
+      ><a name="869" href="Prelim.Res.html#837" class="Bound"
+      >pVar</a
+      ><a name="873"
+      > </a
+      ><a name="874" class="Symbol"
+      >&#8594;</a
+      ><a name="875"
+      >
+  </a
+      ><a name="878" href="Agda.Builtin.List.html#52" class="Datatype"
+      >List</a
+      ><a name="882"
+      > </a
+      ><a name="883" class="Symbol"
+      >(</a
+      ><a name="884" href="Prelim.Syntax.html#6593" class="Datatype"
+      >PTerm</a
+      ><a name="889"
+      > </a
+      ><a name="890" href="Prelim.Res.html#815" class="Bound"
+      >PT&#931;</a
+      ><a name="893"
+      > </a
+      ><a name="894" href="Prelim.Res.html#837" class="Bound"
+      >pVar</a
+      ><a name="898"
+      > </a
+      ><a name="899" href="Data.Product.html#1073" class="Function Operator"
+      >&#215;</a
+      ><a name="900"
+      > </a
+      ><a name="901" href="Data.Product.html#439" class="Record"
+      >P.&#931;</a
+      ><a name="904"
+      > </a
+      ><a name="905" class="Symbol"
+      >(</a
+      ><a name="906" href="Prelim.Syntax.html#875" class="Datatype"
+      >CH</a
+      ><a name="908"
+      > </a
+      ><a name="909" href="Prelim.Res.html#781" class="Bound"
+      >&#931;</a
+      ><a name="910"
+      > </a
+      ><a name="911" href="Prelim.Res.html#801" class="Bound"
+      >var</a
+      ><a name="914" class="Symbol"
+      >)</a
+      ><a name="915"
+      > </a
+      ><a name="916" href="Prelim.Syntax.html#1823" class="Record"
+      >NoExistCH</a
+      ><a name="925" class="Symbol"
+      >)</a
+      ><a name="926"
+      > </a
+      ><a name="927" class="Symbol"
+      >&#8594;</a
+      ><a name="928"
+      >
+  </a
+      ><a name="931" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="936"
+      > </a
+      ><a name="937" href="Prelim.Res.html#781" class="Bound"
+      >&#931;</a
+      ><a name="938"
+      > </a
+      ><a name="939" href="Prelim.Res.html#801" class="Bound"
+      >var</a
+      ><a name="942"
+      > </a
+      ><a name="943" href="Prelim.Res.html#815" class="Bound"
+      >PT&#931;</a
+      ><a name="946"
+      > </a
+      ><a name="947" href="Prelim.Res.html#837" class="Bound"
+      >pVar</a
+      ><a name="951"
+      >
+</a
+      ><a name="952" href="Prelim.Res.html#756" class="Function"
+      >extEnv</a
+      ><a name="958"
+      > </a
+      ><a name="959" href="Prelim.Res.html#959" class="Bound"
+      >&#934;</a
+      ><a name="960"
+      > </a
+      ><a name="961" href="Agda.Builtin.List.html#89" class="InductiveConstructor"
+      >[]</a
+      ><a name="963"
+      > </a
+      ><a name="964" class="Symbol"
+      >=</a
+      ><a name="965"
+      > </a
+      ><a name="966" href="Prelim.Res.html#959" class="Bound"
+      >&#934;</a
+      ><a name="967"
+      >
+</a
+      ><a name="968" href="Prelim.Res.html#756" class="Function"
+      >extEnv</a
+      ><a name="974"
+      > </a
+      ><a name="975" href="Prelim.Res.html#975" class="Bound"
+      >&#934;</a
+      ><a name="976"
+      > </a
+      ><a name="977" class="Symbol"
+      >((</a
+      ><a name="979" href="Prelim.Res.html#979" class="Bound"
+      >pt</a
+      ><a name="981"
+      > </a
+      ><a name="982" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="983"
+      > </a
+      ><a name="984" href="Prelim.Res.html#984" class="Bound"
+      >ch</a
+      ><a name="986"
+      > </a
+      ><a name="987" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="988"
+      > </a
+      ><a name="989" href="Prelim.Res.html#989" class="Bound"
+      >wCh</a
+      ><a name="992" class="Symbol"
+      >)</a
+      ><a name="993"
+      > </a
+      ><a name="994" href="Agda.Builtin.List.html#104" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="995"
+      > </a
+      ><a name="996" href="Prelim.Res.html#996" class="Bound"
+      >xs</a
+      ><a name="998" class="Symbol"
+      >)</a
+      ><a name="999"
+      >
+  </a
+      ><a name="1002" class="Symbol"
+      >=</a
+      ><a name="1003"
+      > </a
+      ><a name="1004" href="Prelim.Res.html#756" class="Function"
+      >extEnv</a
+      ><a name="1010"
+      > </a
+      ><a name="1011" class="Symbol"
+      >(</a
+      ><a name="1012" href="Prelim.Res.html#975" class="Bound"
+      >&#934;</a
+      ><a name="1013"
+      > </a
+      ><a name="1014" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1015"
+      > </a
+      ><a name="1016" href="Prelim.Res.html#979" class="Bound"
+      >pt</a
+      ><a name="1018"
+      > </a
+      ><a name="1019" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1020"
+      > </a
+      ><a name="1021" href="Prelim.Res.html#984" class="Bound"
+      >ch</a
+      ><a name="1023"
+      > </a
+      ><a name="1024" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#10214;</a
+      ><a name="1025"
+      > </a
+      ><a name="1026" href="Prelim.Res.html#989" class="Bound"
+      >wCh</a
+      ><a name="1029"
+      > </a
+      ><a name="1030" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#10215;</a
+      ><a name="1031" class="Symbol"
+      >)</a
+      ><a name="1032"
+      > </a
+      ><a name="1033" href="Prelim.Res.html#996" class="Bound"
+      >xs</a
+      ><a name="1035"
+      >
+
+</a
+      ><a name="1037" class="Keyword"
+      >open</a
+      ><a name="1041"
+      > </a
+      ><a name="1042" href="Prelim.Syntax.html#4111" class="Module"
+      >Program</a
+      ><a name="1049"
+      >
+
+</a
+      ><a name="1051" href="Prelim.Res.html#1051" class="Function"
+      >extPrg</a
+      ><a name="1057"
+      > </a
+      ><a name="1058" class="Symbol"
+      >:</a
+      ><a name="1059"
+      > </a
+      ><a name="1060" class="Symbol"
+      >{</a
+      ><a name="1061" href="Prelim.Res.html#1061" class="Bound"
+      >n</a
+      ><a name="1062"
+      > </a
+      ><a name="1063" href="Prelim.Res.html#1063" class="Bound"
+      >m</a
+      ><a name="1064"
+      > </a
+      ><a name="1065" class="Symbol"
+      >:</a
+      ><a name="1066"
+      > </a
+      ><a name="1067" href="Agda.Builtin.Nat.html#69" class="Datatype"
+      >&#8469;</a
+      ><a name="1068"
+      > </a
+      ><a name="1069" class="Symbol"
+      >}</a
+      ><a name="1070"
+      >
+  </a
+      ><a name="1073" class="Symbol"
+      >{</a
+      ><a name="1074" href="Prelim.Res.html#1074" class="Bound"
+      >&#931;</a
+      ><a name="1075"
+      > </a
+      ><a name="1076" class="Symbol"
+      >:</a
+      ><a name="1077"
+      > </a
+      ><a name="1078" href="Prelim.Syntax.html#106" class="Record"
+      >Signature</a
+      ><a name="1087"
+      > </a
+      ><a name="1088" href="Prelim.Res.html#1061" class="Bound"
+      >n</a
+      ><a name="1089"
+      > </a
+      ><a name="1090" href="Prelim.Res.html#1063" class="Bound"
+      >m</a
+      ><a name="1091" class="Symbol"
+      >}</a
+      ><a name="1092"
+      > </a
+      ><a name="1093" class="Symbol"
+      >{</a
+      ><a name="1094" href="Prelim.Res.html#1094" class="Bound"
+      >var</a
+      ><a name="1097"
+      > </a
+      ><a name="1098" class="Symbol"
+      >:</a
+      ><a name="1099"
+      > </a
+      ><a name="1100" class="PrimitiveType"
+      >Set</a
+      ><a name="1103" class="Symbol"
+      >}</a
+      ><a name="1104"
+      > </a
+      ><a name="1105" class="Symbol"
+      >&#8594;</a
+      ><a name="1106"
+      >
+  </a
+      ><a name="1109" href="Prelim.Syntax.html#4111" class="Record"
+      >Program</a
+      ><a name="1116"
+      > </a
+      ><a name="1117" href="Prelim.Res.html#1074" class="Bound"
+      >&#931;</a
+      ><a name="1118"
+      > </a
+      ><a name="1119" href="Prelim.Res.html#1094" class="Bound"
+      >var</a
+      ><a name="1122"
+      > </a
+      ><a name="1123" class="Symbol"
+      >&#8594;</a
+      ><a name="1124"
+      >
+  </a
+      ><a name="1127" href="Agda.Builtin.List.html#52" class="Datatype"
+      >List</a
+      ><a name="1131"
+      > </a
+      ><a name="1132" class="Symbol"
+      >(</a
+      ><a name="1133" href="Data.Product.html#439" class="Record"
+      >P.&#931;</a
+      ><a name="1136"
+      > </a
+      ><a name="1137" class="Symbol"
+      >(</a
+      ><a name="1138" href="Prelim.Syntax.html#875" class="Datatype"
+      >CH</a
+      ><a name="1140"
+      > </a
+      ><a name="1141" href="Prelim.Res.html#1074" class="Bound"
+      >&#931;</a
+      ><a name="1142"
+      > </a
+      ><a name="1143" href="Prelim.Res.html#1094" class="Bound"
+      >var</a
+      ><a name="1146" class="Symbol"
+      >)</a
+      ><a name="1147"
+      > </a
+      ><a name="1148" href="Prelim.Syntax.html#1823" class="Record"
+      >NoExistCH</a
+      ><a name="1157" class="Symbol"
+      >)</a
+      ><a name="1158"
+      > </a
+      ><a name="1159" class="Symbol"
+      >&#8594;</a
+      ><a name="1160"
+      >
+  </a
+      ><a name="1163" href="Prelim.Syntax.html#4111" class="Record"
+      >Program</a
+      ><a name="1170"
+      > </a
+      ><a name="1171" href="Prelim.Res.html#1074" class="Bound"
+      >&#931;</a
+      ><a name="1172"
+      > </a
+      ><a name="1173" href="Prelim.Res.html#1094" class="Bound"
+      >var</a
+      ><a name="1176"
+      >
+</a
+      ><a name="1177" href="Prelim.Res.html#1051" class="Function"
+      >extPrg</a
+      ><a name="1183"
+      > </a
+      ><a name="1184" href="Prelim.Res.html#1184" class="Bound"
+      >P</a
+      ><a name="1185"
+      > </a
+      ><a name="1186" href="Prelim.Res.html#1186" class="Bound"
+      >chs</a
+      ><a name="1189"
+      > </a
+      ><a name="1190" class="Symbol"
+      >=</a
+      ><a name="1191"
+      > </a
+      ><a name="1192" class="Keyword"
+      >record</a
+      ><a name="1198"
+      > </a
+      ><a name="1199" class="Symbol"
+      >{</a
+      ><a name="1200"
+      > </a
+      ><a name="1201" class="Field"
+      >prg</a
+      ><a name="1204"
+      > </a
+      ><a name="1205" class="Symbol"
+      >=</a
+      ><a name="1206"
+      > </a
+      ><a name="1207" href="Prelim.Res.html#1237" class="Function"
+      >foo</a
+      ><a name="1210"
+      > </a
+      ><a name="1211" class="Symbol"
+      >(</a
+      ><a name="1212" href="Prelim.Syntax.html#4185" class="Field"
+      >prg</a
+      ><a name="1215"
+      > </a
+      ><a name="1216" href="Prelim.Res.html#1184" class="Bound"
+      >P</a
+      ><a name="1217" class="Symbol"
+      >)</a
+      ><a name="1218"
+      > </a
+      ><a name="1219" href="Prelim.Res.html#1186" class="Bound"
+      >chs</a
+      ><a name="1222"
+      > </a
+      ><a name="1223" class="Symbol"
+      >}</a
+      ><a name="1224"
+      >
+  </a
+      ><a name="1227" class="Keyword"
+      >where</a
+      ><a name="1232"
+      >
+    </a
+      ><a name="1237" href="Prelim.Res.html#1237" class="Function"
+      >foo</a
+      ><a name="1240"
+      > </a
+      ><a name="1241" class="Symbol"
+      >:</a
+      ><a name="1242"
+      > </a
+      ><a name="1243" class="Symbol"
+      >&#8704;</a
+      ><a name="1244"
+      > </a
+      ><a name="1245" class="Symbol"
+      >{</a
+      ><a name="1246" href="Prelim.Res.html#1246" class="Bound"
+      >A</a
+      ><a name="1247" class="Symbol"
+      >}</a
+      ><a name="1248"
+      > </a
+      ><a name="1249" class="Symbol"
+      >&#8594;</a
+      ><a name="1250"
+      > </a
+      ><a name="1251" href="Agda.Builtin.List.html#52" class="Datatype"
+      >List</a
+      ><a name="1255"
+      > </a
+      ><a name="1256" href="Prelim.Res.html#1246" class="Bound"
+      >A</a
+      ><a name="1257"
+      > </a
+      ><a name="1258" class="Symbol"
+      >&#8594;</a
+      ><a name="1259"
+      > </a
+      ><a name="1260" href="Agda.Builtin.List.html#52" class="Datatype"
+      >List</a
+      ><a name="1264"
+      > </a
+      ><a name="1265" href="Prelim.Res.html#1246" class="Bound"
+      >A</a
+      ><a name="1266"
+      > </a
+      ><a name="1267" class="Symbol"
+      >&#8594;</a
+      ><a name="1268"
+      > </a
+      ><a name="1269" href="Agda.Builtin.List.html#52" class="Datatype"
+      >List</a
+      ><a name="1273"
+      > </a
+      ><a name="1274" href="Prelim.Res.html#1246" class="Bound"
+      >A</a
+      ><a name="1275"
+      >
+    </a
+      ><a name="1280" href="Prelim.Res.html#1237" class="Function"
+      >foo</a
+      ><a name="1283"
+      > </a
+      ><a name="1284" href="Prelim.Res.html#1284" class="Bound"
+      >ps</a
+      ><a name="1286"
+      > </a
+      ><a name="1287" href="Agda.Builtin.List.html#89" class="InductiveConstructor"
+      >[]</a
+      ><a name="1289"
+      > </a
+      ><a name="1290" class="Symbol"
+      >=</a
+      ><a name="1291"
+      > </a
+      ><a name="1292" href="Prelim.Res.html#1284" class="Bound"
+      >ps</a
+      ><a name="1294"
+      >
+    </a
+      ><a name="1299" href="Prelim.Res.html#1237" class="Function"
+      >foo</a
+      ><a name="1302"
+      > </a
+      ><a name="1303" href="Prelim.Res.html#1303" class="Bound"
+      >ps</a
+      ><a name="1305"
+      > </a
+      ><a name="1306" class="Symbol"
+      >(</a
+      ><a name="1307" href="Prelim.Res.html#1307" class="Bound"
+      >ch</a
+      ><a name="1309"
+      > </a
+      ><a name="1310" href="Agda.Builtin.List.html#104" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1311"
+      > </a
+      ><a name="1312" href="Prelim.Res.html#1312" class="Bound"
+      >chs</a
+      ><a name="1315" class="Symbol"
+      >)</a
+      ><a name="1316"
+      > </a
+      ><a name="1317" class="Symbol"
+      >=</a
+      ><a name="1318"
+      > </a
+      ><a name="1319" href="Prelim.Res.html#1307" class="Bound"
+      >ch</a
+      ><a name="1321"
+      > </a
+      ><a name="1322" href="Agda.Builtin.List.html#104" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1323"
+      > </a
+      ><a name="1324" class="Symbol"
+      >(</a
+      ><a name="1325" href="Prelim.Res.html#1237" class="Function"
+      >foo</a
+      ><a name="1328"
+      > </a
+      ><a name="1329" href="Prelim.Res.html#1303" class="Bound"
+      >ps</a
+      ><a name="1331"
+      > </a
+      ><a name="1332" href="Prelim.Res.html#1312" class="Bound"
+      >chs</a
+      ><a name="1335" class="Symbol"
+      >)</a
+      ><a name="1336"
+      >
+
+</a
+      ><a name="1338" class="Keyword"
+      >module</a
+      ><a name="1344"
+      > </a
+      ><a name="1345" href="Prelim.Res.html#1345" class="Module"
+      >AxEnvAny</a
+      ><a name="1353"
+      > </a
+      ><a name="1354" class="Keyword"
+      >where</a
+      ><a name="1359"
+      >
+  </a
+      ><a name="1362" class="Comment"
+      >-- Any P xs means that at least one element in xs satisfies P.</a
+      ><a name="1424"
+      >
+
+  </a
+      ><a name="1428" class="Keyword"
+      >data</a
+      ><a name="1432"
+      > </a
+      ><a name="1433" href="Prelim.Res.html#1433" class="Datatype"
+      >AEAny</a
+      ><a name="1438"
+      > </a
+      ><a name="1439" class="Symbol"
+      >{</a
+      ><a name="1440" href="Prelim.Res.html#1440" class="Bound"
+      >n</a
+      ><a name="1441"
+      > </a
+      ><a name="1442" href="Prelim.Res.html#1442" class="Bound"
+      >m</a
+      ><a name="1443"
+      > </a
+      ><a name="1444" href="Prelim.Res.html#1444" class="Bound"
+      >l</a
+      ><a name="1445"
+      > </a
+      ><a name="1446" class="Symbol"
+      >:</a
+      ><a name="1447"
+      > </a
+      ><a name="1448" href="Agda.Builtin.Nat.html#69" class="Datatype"
+      >&#8469;</a
+      ><a name="1449" class="Symbol"
+      >}</a
+      ><a name="1450"
+      >
+       </a
+      ><a name="1458" class="Symbol"
+      >{</a
+      ><a name="1459" href="Prelim.Res.html#1459" class="Bound"
+      >&#931;</a
+      ><a name="1460"
+      > </a
+      ><a name="1461" class="Symbol"
+      >:</a
+      ><a name="1462"
+      > </a
+      ><a name="1463" href="Prelim.Syntax.html#106" class="Record"
+      >Signature</a
+      ><a name="1472"
+      > </a
+      ><a name="1473" href="Prelim.Res.html#1440" class="Bound"
+      >n</a
+      ><a name="1474"
+      > </a
+      ><a name="1475" href="Prelim.Res.html#1442" class="Bound"
+      >m</a
+      ><a name="1476" class="Symbol"
+      >}</a
+      ><a name="1477"
+      > </a
+      ><a name="1478" class="Symbol"
+      >{</a
+      ><a name="1479" href="Prelim.Res.html#1479" class="Bound"
+      >var</a
+      ><a name="1482"
+      > </a
+      ><a name="1483" class="Symbol"
+      >:</a
+      ><a name="1484"
+      > </a
+      ><a name="1485" class="PrimitiveType"
+      >Set</a
+      ><a name="1488" class="Symbol"
+      >}</a
+      ><a name="1489"
+      >
+       </a
+      ><a name="1497" class="Symbol"
+      >{</a
+      ><a name="1498" href="Prelim.Res.html#1498" class="Bound"
+      >PT&#931;</a
+      ><a name="1501"
+      > </a
+      ><a name="1502" class="Symbol"
+      >:</a
+      ><a name="1503"
+      > </a
+      ><a name="1504" href="Prelim.Syntax.html#6461" class="Record"
+      >PTSignature</a
+      ><a name="1515"
+      > </a
+      ><a name="1516" href="Prelim.Res.html#1444" class="Bound"
+      >l</a
+      ><a name="1517" class="Symbol"
+      >}</a
+      ><a name="1518"
+      > </a
+      ><a name="1519" class="Symbol"
+      >{</a
+      ><a name="1520" href="Prelim.Res.html#1520" class="Bound"
+      >pVar</a
+      ><a name="1524"
+      > </a
+      ><a name="1525" class="Symbol"
+      >:</a
+      ><a name="1526"
+      > </a
+      ><a name="1527" class="PrimitiveType"
+      >Set</a
+      ><a name="1530" class="Symbol"
+      >}</a
+      ><a name="1531"
+      >
+       </a
+      ><a name="1539" class="Symbol"
+      >(</a
+      ><a name="1540" href="Prelim.Res.html#1540" class="Bound"
+      >P</a
+      ><a name="1541"
+      > </a
+      ><a name="1542" class="Symbol"
+      >:</a
+      ><a name="1543"
+      > </a
+      ><a name="1544" href="Prelim.Syntax.html#6593" class="Datatype"
+      >PTerm</a
+      ><a name="1549"
+      > </a
+      ><a name="1550" href="Prelim.Res.html#1498" class="Bound"
+      >PT&#931;</a
+      ><a name="1553"
+      > </a
+      ><a name="1554" href="Prelim.Res.html#1520" class="Bound"
+      >pVar</a
+      ><a name="1558"
+      > </a
+      ><a name="1559" class="Symbol"
+      >&#8594;</a
+      ><a name="1560"
+      > </a
+      ><a name="1561" class="Symbol"
+      >(</a
+      ><a name="1562" href="Prelim.Res.html#1562" class="Bound"
+      >ch</a
+      ><a name="1564"
+      > </a
+      ><a name="1565" class="Symbol"
+      >:</a
+      ><a name="1566"
+      > </a
+      ><a name="1567" href="Prelim.Syntax.html#875" class="Datatype"
+      >CH</a
+      ><a name="1569"
+      > </a
+      ><a name="1570" href="Prelim.Res.html#1459" class="Bound"
+      >&#931;</a
+      ><a name="1571"
+      > </a
+      ><a name="1572" href="Prelim.Res.html#1479" class="Bound"
+      >var</a
+      ><a name="1575" class="Symbol"
+      >)</a
+      ><a name="1576"
+      > </a
+      ><a name="1577" class="Symbol"
+      >&#8594;</a
+      ><a name="1578"
+      > </a
+      ><a name="1579" class="Symbol"
+      >(</a
+      ><a name="1580" href="Prelim.Syntax.html#1823" class="Record"
+      >NoExistCH</a
+      ><a name="1589"
+      > </a
+      ><a name="1590" href="Prelim.Res.html#1562" class="Bound"
+      >ch</a
+      ><a name="1592" class="Symbol"
+      >)</a
+      ><a name="1593"
+      >
+         </a
+      ><a name="1603" class="Symbol"
+      >&#8594;</a
+      ><a name="1604"
+      > </a
+      ><a name="1605" class="PrimitiveType"
+      >Set</a
+      ><a name="1608" class="Symbol"
+      >)</a
+      ><a name="1609"
+      > </a
+      ><a name="1610" class="Symbol"
+      >:</a
+      ><a name="1611"
+      > </a
+      ><a name="1612" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="1617"
+      > </a
+      ><a name="1618" href="Prelim.Res.html#1459" class="Bound"
+      >&#931;</a
+      ><a name="1619"
+      > </a
+      ><a name="1620" href="Prelim.Res.html#1479" class="Bound"
+      >var</a
+      ><a name="1623"
+      > </a
+      ><a name="1624" href="Prelim.Res.html#1498" class="Bound"
+      >PT&#931;</a
+      ><a name="1627"
+      > </a
+      ><a name="1628" href="Prelim.Res.html#1520" class="Bound"
+      >pVar</a
+      ><a name="1632"
+      > </a
+      ><a name="1633" class="Symbol"
+      >&#8594;</a
+      ><a name="1634"
+      > </a
+      ><a name="1635" class="PrimitiveType"
+      >Set</a
+      ><a name="1638"
+      > </a
+      ><a name="1639" class="Keyword"
+      >where</a
+      ><a name="1644"
+      >
+       </a
+      ><a name="1652" href="Prelim.Res.html#1652" class="InductiveConstructor"
+      >here</a
+      ><a name="1656"
+      >  </a
+      ><a name="1658" class="Symbol"
+      >:</a
+      ><a name="1659"
+      > </a
+      ><a name="1660" class="Symbol"
+      >&#8704;</a
+      ><a name="1661"
+      > </a
+      ><a name="1662" class="Symbol"
+      >{</a
+      ><a name="1663" href="Prelim.Res.html#1663" class="Bound"
+      >axe</a
+      ><a name="1666"
+      > </a
+      ><a name="1667" href="Prelim.Res.html#1667" class="Bound"
+      >pt</a
+      ><a name="1669"
+      > </a
+      ><a name="1670" href="Prelim.Res.html#1670" class="Bound"
+      >ch</a
+      ><a name="1672"
+      > </a
+      ><a name="1673" href="Prelim.Res.html#1673" class="Bound"
+      >ne</a
+      ><a name="1675" class="Symbol"
+      >}</a
+      ><a name="1676"
+      > </a
+      ><a name="1677" class="Symbol"
+      >(</a
+      ><a name="1678" href="Prelim.Res.html#1678" class="Bound"
+      >px</a
+      ><a name="1680"
+      >  </a
+      ><a name="1682" class="Symbol"
+      >:</a
+      ><a name="1683"
+      > </a
+      ><a name="1684" href="Prelim.Res.html#1540" class="Bound"
+      >P</a
+      ><a name="1685"
+      > </a
+      ><a name="1686" href="Prelim.Res.html#1667" class="Bound"
+      >pt</a
+      ><a name="1688"
+      > </a
+      ><a name="1689" href="Prelim.Res.html#1670" class="Bound"
+      >ch</a
+      ><a name="1691"
+      > </a
+      ><a name="1692" href="Prelim.Res.html#1673" class="Bound"
+      >ne</a
+      ><a name="1694" class="Symbol"
+      >)</a
+      ><a name="1695"
+      >
+         </a
+      ><a name="1705" class="Symbol"
+      >&#8594;</a
+      ><a name="1706"
+      > </a
+      ><a name="1707" href="Prelim.Res.html#1433" class="Datatype"
+      >AEAny</a
+      ><a name="1712"
+      > </a
+      ><a name="1713" href="Prelim.Res.html#1540" class="Bound"
+      >P</a
+      ><a name="1714"
+      > </a
+      ><a name="1715" class="Symbol"
+      >(</a
+      ><a name="1716" href="Prelim.Res.html#1663" class="Bound"
+      >axe</a
+      ><a name="1719"
+      > </a
+      ><a name="1720" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1721"
+      > </a
+      ><a name="1722" href="Prelim.Res.html#1667" class="Bound"
+      >pt</a
+      ><a name="1724"
+      > </a
+      ><a name="1725" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1726"
+      > </a
+      ><a name="1727" href="Prelim.Res.html#1670" class="Bound"
+      >ch</a
+      ><a name="1729"
+      > </a
+      ><a name="1730" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#10214;</a
+      ><a name="1731"
+      > </a
+      ><a name="1732" href="Prelim.Res.html#1673" class="Bound"
+      >ne</a
+      ><a name="1734"
+      > </a
+      ><a name="1735" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#10215;</a
+      ><a name="1736" class="Symbol"
+      >)</a
+      ><a name="1737"
+      >
+       </a
+      ><a name="1745" href="Prelim.Res.html#1745" class="InductiveConstructor"
+      >there</a
+      ><a name="1750"
+      > </a
+      ><a name="1751" class="Symbol"
+      >:</a
+      ><a name="1752"
+      > </a
+      ><a name="1753" class="Symbol"
+      >&#8704;</a
+      ><a name="1754"
+      > </a
+      ><a name="1755" class="Symbol"
+      >{</a
+      ><a name="1756" href="Prelim.Res.html#1756" class="Bound"
+      >axe</a
+      ><a name="1759"
+      > </a
+      ><a name="1760" href="Prelim.Res.html#1760" class="Bound"
+      >pt</a
+      ><a name="1762"
+      > </a
+      ><a name="1763" href="Prelim.Res.html#1763" class="Bound"
+      >ch</a
+      ><a name="1765"
+      > </a
+      ><a name="1766" href="Prelim.Res.html#1766" class="Bound"
+      >ne</a
+      ><a name="1768" class="Symbol"
+      >}</a
+      ><a name="1769"
+      > </a
+      ><a name="1770" class="Symbol"
+      >(</a
+      ><a name="1771" href="Prelim.Res.html#1771" class="Bound"
+      >pxs</a
+      ><a name="1774"
+      > </a
+      ><a name="1775" class="Symbol"
+      >:</a
+      ><a name="1776"
+      > </a
+      ><a name="1777" href="Prelim.Res.html#1433" class="Datatype"
+      >AEAny</a
+      ><a name="1782"
+      > </a
+      ><a name="1783" href="Prelim.Res.html#1540" class="Bound"
+      >P</a
+      ><a name="1784"
+      > </a
+      ><a name="1785" href="Prelim.Res.html#1756" class="Bound"
+      >axe</a
+      ><a name="1788" class="Symbol"
+      >)</a
+      ><a name="1789"
+      >
+         </a
+      ><a name="1799" class="Symbol"
+      >&#8594;</a
+      ><a name="1800"
+      > </a
+      ><a name="1801" href="Prelim.Res.html#1433" class="Datatype"
+      >AEAny</a
+      ><a name="1806"
+      > </a
+      ><a name="1807" href="Prelim.Res.html#1540" class="Bound"
+      >P</a
+      ><a name="1808"
+      > </a
+      ><a name="1809" class="Symbol"
+      >(</a
+      ><a name="1810" href="Prelim.Res.html#1756" class="Bound"
+      >axe</a
+      ><a name="1813"
+      > </a
+      ><a name="1814" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="1815"
+      > </a
+      ><a name="1816" href="Prelim.Res.html#1760" class="Bound"
+      >pt</a
+      ><a name="1818"
+      > </a
+      ><a name="1819" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#8759;</a
+      ><a name="1820"
+      > </a
+      ><a name="1821" href="Prelim.Res.html#1763" class="Bound"
+      >ch</a
+      ><a name="1823"
+      > </a
+      ><a name="1824" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#10214;</a
+      ><a name="1825"
+      > </a
+      ><a name="1826" href="Prelim.Res.html#1766" class="Bound"
+      >ne</a
+      ><a name="1828"
+      > </a
+      ><a name="1829" href="Prelim.Res.html#244" class="InductiveConstructor Operator"
+      >&#10215;</a
+      ><a name="1830" class="Symbol"
+      >)</a
+      ><a name="1831"
+      >
+
+  </a
+      ><a name="1835" class="Keyword"
+      >open</a
+      ><a name="1839"
+      > </a
+      ><a name="1840" href="Prelim.Syntax.html#4111" class="Module"
+      >Program</a
+      ><a name="1847"
+      >
+  
+  </a
+      ><a name="1853" href="Prelim.Res.html#1853" class="Function"
+      >ae2a</a
+      ><a name="1857"
+      > </a
+      ><a name="1858" class="Symbol"
+      >:</a
+      ><a name="1859"
+      > </a
+      ><a name="1860" class="Symbol"
+      >{</a
+      ><a name="1861" href="Prelim.Res.html#1861" class="Bound"
+      >n</a
+      ><a name="1862"
+      > </a
+      ><a name="1863" href="Prelim.Res.html#1863" class="Bound"
+      >m</a
+      ><a name="1864"
+      > </a
+      ><a name="1865" href="Prelim.Res.html#1865" class="Bound"
+      >l</a
+      ><a name="1866"
+      > </a
+      ><a name="1867" class="Symbol"
+      >:</a
+      ><a name="1868"
+      > </a
+      ><a name="1869" href="Agda.Builtin.Nat.html#69" class="Datatype"
+      >&#8469;</a
+      ><a name="1870" class="Symbol"
+      >}</a
+      ><a name="1871"
+      >
+       </a
+      ><a name="1879" class="Symbol"
+      >{</a
+      ><a name="1880" href="Prelim.Res.html#1880" class="Bound"
+      >&#931;</a
+      ><a name="1881"
+      > </a
+      ><a name="1882" class="Symbol"
+      >:</a
+      ><a name="1883"
+      > </a
+      ><a name="1884" href="Prelim.Syntax.html#106" class="Record"
+      >Signature</a
+      ><a name="1893"
+      > </a
+      ><a name="1894" href="Prelim.Res.html#1861" class="Bound"
+      >n</a
+      ><a name="1895"
+      > </a
+      ><a name="1896" href="Prelim.Res.html#1863" class="Bound"
+      >m</a
+      ><a name="1897" class="Symbol"
+      >}</a
+      ><a name="1898"
+      > </a
+      ><a name="1899" class="Symbol"
+      >{</a
+      ><a name="1900" href="Prelim.Res.html#1900" class="Bound"
+      >var</a
+      ><a name="1903"
+      > </a
+      ><a name="1904" class="Symbol"
+      >:</a
+      ><a name="1905"
+      > </a
+      ><a name="1906" class="PrimitiveType"
+      >Set</a
+      ><a name="1909" class="Symbol"
+      >}</a
+      ><a name="1910"
+      >
+       </a
+      ><a name="1918" class="Symbol"
+      >{</a
+      ><a name="1919" href="Prelim.Res.html#1919" class="Bound"
+      >PT&#931;</a
+      ><a name="1922"
+      > </a
+      ><a name="1923" class="Symbol"
+      >:</a
+      ><a name="1924"
+      > </a
+      ><a name="1925" href="Prelim.Syntax.html#6461" class="Record"
+      >PTSignature</a
+      ><a name="1936"
+      > </a
+      ><a name="1937" href="Prelim.Res.html#1865" class="Bound"
+      >l</a
+      ><a name="1938" class="Symbol"
+      >}</a
+      ><a name="1939"
+      > </a
+      ><a name="1940" class="Symbol"
+      >{</a
+      ><a name="1941" href="Prelim.Res.html#1941" class="Bound"
+      >pVar</a
+      ><a name="1945"
+      > </a
+      ><a name="1946" class="Symbol"
+      >:</a
+      ><a name="1947"
+      > </a
+      ><a name="1948" class="PrimitiveType"
+      >Set</a
+      ><a name="1951" class="Symbol"
+      >}</a
+      ><a name="1952"
+      >
+       </a
+      ><a name="1960" class="Symbol"
+      >{</a
+      ><a name="1961" href="Prelim.Res.html#1961" class="Bound"
+      >P</a
+      ><a name="1962"
+      > </a
+      ><a name="1963" class="Symbol"
+      >:</a
+      ><a name="1964"
+      > </a
+      ><a name="1965" href="Prelim.Syntax.html#6593" class="Datatype"
+      >PTerm</a
+      ><a name="1970"
+      > </a
+      ><a name="1971" href="Prelim.Res.html#1919" class="Bound"
+      >PT&#931;</a
+      ><a name="1974"
+      > </a
+      ><a name="1975" href="Prelim.Res.html#1941" class="Bound"
+      >pVar</a
+      ><a name="1979"
+      > </a
+      ><a name="1980" class="Symbol"
+      >&#8594;</a
+      ><a name="1981"
+      > </a
+      ><a name="1982" class="Symbol"
+      >(</a
+      ><a name="1983" href="Prelim.Res.html#1983" class="Bound"
+      >ch</a
+      ><a name="1985"
+      > </a
+      ><a name="1986" class="Symbol"
+      >:</a
+      ><a name="1987"
+      > </a
+      ><a name="1988" href="Prelim.Syntax.html#875" class="Datatype"
+      >CH</a
+      ><a name="1990"
+      > </a
+      ><a name="1991" href="Prelim.Res.html#1880" class="Bound"
+      >&#931;</a
+      ><a name="1992"
+      > </a
+      ><a name="1993" href="Prelim.Res.html#1900" class="Bound"
+      >var</a
+      ><a name="1996" class="Symbol"
+      >)</a
+      ><a name="1997"
+      > </a
+      ><a name="1998" class="Symbol"
+      >&#8594;</a
+      ><a name="1999"
+      > </a
+      ><a name="2000" class="Symbol"
+      >(</a
+      ><a name="2001" href="Prelim.Syntax.html#1823" class="Record"
+      >NoExistCH</a
+      ><a name="2010"
+      > </a
+      ><a name="2011" href="Prelim.Res.html#1983" class="Bound"
+      >ch</a
+      ><a name="2013" class="Symbol"
+      >)</a
+      ><a name="2014"
+      > </a
+      ><a name="2015" class="Symbol"
+      >&#8594;</a
+      ><a name="2016"
+      > </a
+      ><a name="2017" class="PrimitiveType"
+      >Set</a
+      ><a name="2020" class="Symbol"
+      >}</a
+      ><a name="2021"
+      > </a
+      ><a name="2022" class="Symbol"
+      >&#8594;</a
+      ><a name="2023"
+      >
+       </a
+      ><a name="2031" class="Symbol"
+      >{</a
+      ><a name="2032" href="Prelim.Res.html#2032" class="Bound"
+      >Q</a
+      ><a name="2033"
+      > </a
+      ><a name="2034" class="Symbol"
+      >:</a
+      ><a name="2035"
+      > </a
+      ><a name="2036" class="Symbol"
+      >(</a
+      ><a name="2037" href="Data.Product.html#439" class="Record"
+      >P.&#931;</a
+      ><a name="2040"
+      > </a
+      ><a name="2041" class="Symbol"
+      >(</a
+      ><a name="2042" href="Prelim.Syntax.html#875" class="Datatype"
+      >CH</a
+      ><a name="2044"
+      > </a
+      ><a name="2045" href="Prelim.Res.html#1880" class="Bound"
+      >&#931;</a
+      ><a name="2046"
+      > </a
+      ><a name="2047" href="Prelim.Res.html#1900" class="Bound"
+      >var</a
+      ><a name="2050" class="Symbol"
+      >)</a
+      ><a name="2051"
+      > </a
+      ><a name="2052" href="Prelim.Syntax.html#1823" class="Record"
+      >NoExistCH</a
+      ><a name="2061" class="Symbol"
+      >)</a
+      ><a name="2062"
+      > </a
+      ><a name="2063" class="Symbol"
+      >&#8594;</a
+      ><a name="2064"
+      > </a
+      ><a name="2065" class="PrimitiveType"
+      >Set</a
+      ><a name="2068" class="Symbol"
+      >}</a
+      ><a name="2069"
+      > </a
+      ><a name="2070" class="Symbol"
+      >&#8594;</a
+      ><a name="2071"
+      >
+       </a
+      ><a name="2079" class="Symbol"
+      >{</a
+      ><a name="2080" href="Prelim.Res.html#2080" class="Bound"
+      >ae</a
+      ><a name="2082"
+      > </a
+      ><a name="2083" class="Symbol"
+      >:</a
+      ><a name="2084"
+      > </a
+      ><a name="2085" href="Prelim.Res.html#113" class="Datatype"
+      >AxEnv</a
+      ><a name="2090"
+      > </a
+      ><a name="2091" href="Prelim.Res.html#1880" class="Bound"
+      >&#931;</a
+      ><a name="2092"
+      > </a
+      ><a name="2093" href="Prelim.Res.html#1900" class="Bound"
+      >var</a
+      ><a name="2096"
+      > </a
+      ><a name="2097" href="Prelim.Res.html#1919" class="Bound"
+      >PT&#931;</a
+      ><a name="2100"
+      > </a
+      ><a name="2101" href="Prelim.Res.html#1941" class="Bound"
+      >pVar</a
+      ><a name="2105" class="Symbol"
+      >}</a
+      ><a name="2106"
+      > </a
+      ><a name="2107" class="Symbol"
+      >&#8594;</a
+      ><a name="2108"
+      >
+       </a
+      ><a name="2116" href="Prelim.Res.html#1433" class="Datatype"
+      >AEAny</a
+      ><a name="2121"
+      > </a
+      ><a name="2122" href="Prelim.Res.html#1961" class="Bound"
+      >P</a
+      ><a name="2123"
+      > </a
+      ><a name="2124" href="Prelim.Res.html#2080" class="Bound"
+      >ae</a
+      ><a name="2126"
+      > </a
+      ><a name="2127" class="Symbol"
+      >&#8594;</a
+      ><a name="2128"
+      >
+       </a
+      ><a name="2136" class="Symbol"
+      >(&#8704;</a
+      ><a name="2138"
+      > </a
+      ><a name="2139" class="Symbol"
+      >{</a
+      ><a name="2140" href="Prelim.Res.html#2140" class="Bound"
+      >pt</a
+      ><a name="2142"
+      > </a
+      ><a name="2143" class="Symbol"
+      >:</a
+      ><a name="2144"
+      > </a
+      ><a name="2145" href="Prelim.Syntax.html#6593" class="Datatype"
+      >PTerm</a
+      ><a name="2150"
+      > </a
+      ><a name="2151" href="Prelim.Res.html#1919" class="Bound"
+      >PT&#931;</a
+      ><a name="2154"
+      > </a
+      ><a name="2155" href="Prelim.Res.html#1941" class="Bound"
+      >pVar</a
+      ><a name="2159" class="Symbol"
+      >}</a
+      ><a name="2160"
+      > </a
+      ><a name="2161" class="Symbol"
+      >{</a
+      ><a name="2162" href="Prelim.Res.html#2162" class="Bound"
+      >ch</a
+      ><a name="2164"
+      > </a
+      ><a name="2165" class="Symbol"
+      >:</a
+      ><a name="2166"
+      > </a
+      ><a name="2167" href="Prelim.Syntax.html#875" class="Datatype"
+      >CH</a
+      ><a name="2169"
+      > </a
+      ><a name="2170" href="Prelim.Res.html#1880" class="Bound"
+      >&#931;</a
+      ><a name="2171"
+      > </a
+      ><a name="2172" href="Prelim.Res.html#1900" class="Bound"
+      >var</a
+      ><a name="2175" class="Symbol"
+      >}</a
+      ><a name="2176"
+      > </a
+      ><a name="2177" class="Symbol"
+      >{</a
+      ><a name="2178" href="Prelim.Res.html#2178" class="Bound"
+      >wCh</a
+      ><a name="2181"
+      > </a
+      ><a name="2182" class="Symbol"
+      >:</a
+      ><a name="2183"
+      > </a
+      ><a name="2184" href="Prelim.Syntax.html#1823" class="Record"
+      >NoExistCH</a
+      ><a name="2193"
+      > </a
+      ><a name="2194" href="Prelim.Res.html#2162" class="Bound"
+      >ch</a
+      ><a name="2196" class="Symbol"
+      >}</a
+      ><a name="2197"
+      >
+       </a
+      ><a name="2205" class="Symbol"
+      >&#8594;</a
+      ><a name="2206"
+      > </a
+      ><a name="2207" href="Prelim.Res.html#1961" class="Bound"
+      >P</a
+      ><a name="2208"
+      > </a
+      ><a name="2209" href="Prelim.Res.html#2140" class="Bound"
+      >pt</a
+      ><a name="2211"
+      > </a
+      ><a name="2212" href="Prelim.Res.html#2162" class="Bound"
+      >ch</a
+      ><a name="2214"
+      > </a
+      ><a name="2215" href="Prelim.Res.html#2178" class="Bound"
+      >wCh</a
+      ><a name="2218"
+      > </a
+      ><a name="2219" class="Symbol"
+      >&#8594;</a
+      ><a name="2220"
+      > </a
+      ><a name="2221" href="Prelim.Res.html#2032" class="Bound"
+      >Q</a
+      ><a name="2222"
+      > </a
+      ><a name="2223" class="Symbol"
+      >(</a
+      ><a name="2224" href="Prelim.Res.html#2162" class="Bound"
+      >ch</a
+      ><a name="2226"
+      > </a
+      ><a name="2227" href="Data.Product.html#509" class="InductiveConstructor Operator"
+      >,</a
+      ><a name="2228"
+      > </a
+      ><a name="2229" href="Prelim.Res.html#2178" class="Bound"
+      >wCh</a
+      ><a name="2232" class="Symbol"
+      >))</a
+      ><a name="2234"
+      > </a
+      ><a name="2235" class="Symbol"
+      >&#8594;</a
+      ><a name="2236"
+      >
+       </a
+      ><a name="2244" href="Data.List.Any.html#1096" class="Datatype"
+      >Any</a
+      ><a name="2247"
+      > </a
+      ><a name="2248" href="Prelim.Res.html#2032" class="Bound"
+      >Q</a
+      ><a name="2249"
+      > </a
+      ><a name="2250" class="Symbol"
+      >(</a
+      ><a name="2251" href="Prelim.Syntax.html#4185" class="Field"
+      >prg</a
+      ><a name="2254"
+      > </a
+      ><a name="2255" class="Symbol"
+      >(</a
+      ><a name="2256" href="Prelim.Res.html#421" class="Function"
+      >toPrg</a
+      ><a name="2261"
+      > </a
+      ><a name="2262" href="Prelim.Res.html#2080" class="Bound"
+      >ae</a
+      ><a name="2264" class="Symbol"
+      >))</a
+      ><a name="2266"
+      >
+  </a
+      ><a name="2269" href="Prelim.Res.html#1853" class="Function"
+      >ae2a</a
+      ><a name="2273"
+      > </a
+      ><a name="2274" class="Symbol"
+      >(</a
+      ><a name="2275" href="Prelim.Res.html#1652" class="InductiveConstructor"
+      >here</a
+      ><a name="2279"
+      > </a
+      ><a name="2280" href="Prelim.Res.html#2280" class="Bound"
+      >px</a
+      ><a name="2282" class="Symbol"
+      >)</a
+      ><a name="2283"
+      > </a
+      ><a name="2284" href="Prelim.Res.html#2284" class="Bound"
+      >pq</a
+      ><a name="2286"
+      > </a
+      ><a name="2287" class="Symbol"
+      >=</a
+      ><a name="2288"
+      > </a
+      ><a name="2289" href="Data.List.Any.html#1174" class="InductiveConstructor"
+      >here</a
+      ><a name="2293"
+      > </a
+      ><a name="2294" class="Symbol"
+      >(</a
+      ><a name="2295" href="Prelim.Res.html#2284" class="Bound"
+      >pq</a
+      ><a name="2297"
+      > </a
+      ><a name="2298" href="Prelim.Res.html#2280" class="Bound"
+      >px</a
+      ><a name="2300" class="Symbol"
+      >)</a
+      ><a name="2301"
+      >
+  </a
+      ><a name="2304" href="Prelim.Res.html#1853" class="Function"
+      >ae2a</a
+      ><a name="2308"
+      > </a
+      ><a name="2309" class="Symbol"
+      >(</a
+      ><a name="2310" href="Prelim.Res.html#1745" class="InductiveConstructor"
+      >there</a
+      ><a name="2315"
+      > </a
+      ><a name="2316" href="Prelim.Res.html#2316" class="Bound"
+      >x</a
+      ><a name="2317" class="Symbol"
+      >)</a
+      ><a name="2318"
+      > </a
+      ><a name="2319" href="Prelim.Res.html#2319" class="Bound"
+      >pq</a
+      ><a name="2321"
+      > </a
+      ><a name="2322" class="Symbol"
+      >=</a
+      ><a name="2323"
+      > </a
+      ><a name="2324" href="Data.List.Any.html#1227" class="InductiveConstructor"
+      >there</a
+      ><a name="2329"
+      > </a
+      ><a name="2330" class="Symbol"
+      >(</a
+      ><a name="2331" href="Prelim.Res.html#1853" class="Function"
+      >ae2a</a
+      ><a name="2335"
+      > </a
+      ><a name="2336" href="Prelim.Res.html#2316" class="Bound"
+      >x</a
+      ><a name="2337"
+      > </a
+      ><a name="2338" href="Prelim.Res.html#2319" class="Bound"
+      >pq</a
+      ><a name="2340" class="Symbol"
+      >)</a
+      ><a name="2341"
+      >
+
+</a
+      ><a name="2343" class="Keyword"
+      >open</a
+      ><a name="2347"
+      > </a
+      ><a name="2348" href="Prelim.Res.html#1345" class="Module"
+      >AxEnvAny</a
+      ><a name="2356"
+      >
+
+</a
+      ></pre
+    ></body
+  ></html
+>
