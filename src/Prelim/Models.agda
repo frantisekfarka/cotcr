@@ -1,7 +1,7 @@
 module Prelim.Models where
 
 
-open import Data.List
+open import Data.List as Lst
 open import Data.List.Any as LAn
 open import Data.List.All as LAl
 open import Data.Nat
@@ -189,3 +189,11 @@ postulate lemma-chtoa : {m n : ℕ} {-
 -} {P : Program Σ var} {A : At Σ var} → {-
 -} CHValid (fp (lfp (M P))) ([] CH.⇒ A) → {-
 -} AtValid (fp (lfp (M P))) (A) 
+
+
+postulate lemma-2 : {n m : ℕ} {-
+-} {Σ : Signature n m} {var : Set} {-
+-} {P : Program Σ var} {A : At Σ var} {-
+-} {Bs : List (At Σ var)} → {-
+-} (extPrg P (Lst.map (λ B → (([] CH.⇒ B) , record { noExist = λ { () } } ) ) Bs)) ⊨'' ([] CH.⇒ A) {-
+-} → P ⊨'' ([] CH.⇒ A)

@@ -233,15 +233,6 @@ module TCResLam where
   open import Data.Empty
   open import Prelim.Res
     
-  postulate lemma-2 : {n m : ℕ} {-
-    -} {Σ : Signature n m} {var : Set} {-
-    -} {P : Program Σ var} {A : At Σ var} {-
-    -} {Bs : List (At Σ var)} → {-
-    -} (extPrg P (L.map (λ
-               B → ([] ⇒ B , record { noExist = λ { () } } )
-               ) Bs)) ⊨'' ([] ⇒ A) {-
-    -} → P ⊨'' ([] ⇒ A)
-
   open import Prelim.Res
 
   thm-ind-sound :
@@ -292,53 +283,50 @@ module TCResLam where
     (Lam {_} {_ ∷ βᵢs'} () _ _)
 
   module Ex₆ where
-  
-{-    ex₆ : ∀ {l m n} →
+
+    open Subst
+    open import Size
+    open import Relation.Binary.PropositionalEquality as PE hiding (subst)
+    open import Level
+
+    --
+    -- σ-id is identity over a term
+    --
+    {-
+    lemma-σ-id-tvec : ∀ {i : Size} {n m l var} {Σ : Signature n m} → (x : Vec (Term {i} Σ var) l) →
+      V.map (app (σ-id {i})) x ≡ x
+
+    --
+    -- σ-id is identity over a vector of terms
+    -- 
+    lemma-σ-id-term : ∀ {i : Size} {n m var} {Σ : Signature n m} → (t : Term {i} Σ var) →
+      app (σ-id {i}) t ≡ t
+
+
+    lemma-σ-id-tvec [] = refl
+    lemma-σ-id-tvec (x ∷ xs)  = cong₂ (λ x₁ x₂ → x₁ ∷ x₂) (lemma-σ-id-term x) (lemma-σ-id-tvec xs)
+
+    
+    lemma-σ-id-term (VNode v) = refl
+    lemma-σ-id-term (FNode f xs) = cong (λ x → FNode f x) (lemma-σ-id-tvec xs)
+    -}
+
+    --
+    -- σ-id is identity over a term
+    --
+    -- TODO size types, postulated for now
+    --
+    postulate lemma-σ-id-atom : ∀ {i : Size} {n m var} {Σ : Signature n m} → (A : At Σ var) → {-
+    -}  (appA σ-id) A ≡ A
+    --lemma-σ-id-atom (PNode p x) = cong (λ x′ → PNode p x′) (lemma-σ-id-tvec x )
+
+
+    ex₆ : ∀ {l m n} →
         {Σ : Signature n m} {var : Set}
         {PTΣ' : PTSignature l } {pVar : Set}
         {α : pVar} {A : At Σ var} →
       · ⊢ λ' (α ∷ []) ∘ (PVNode {PTΣ = PTΣ'} α) ∷ ((A ∷ []) ⇒ A)
-    ex₆ {_} {α} = Lam {!!} {!!} {!!}
--}
-{-
-    ex₆' : ∀ {l m n} →
-        {Σ : Signature n m} {var : Set}
-        {PTΣ' : PTSignature l } {pVar : Set}
-        {α : pVar} {A : At Σ var} →
-      ( · , PVNode α ∷ ([]) ⇒ A ⟦ record { noExist = λ { () } } ⟧) ⊢ PVNode {PTΣ = PTΣ'} α ∷ ([] ⇒ A)
-    ex₆' {α = α} {A = A} with appA σ-id A
-    ex₆' {α = α} {A = A} | z = {!!} -- Lp-m refl σ-id A refl [] refl [] (here refl)
--}
-
-    open Subst
-    open import Size
-
-
-    open import Relation.Binary.PropositionalEquality as PE hiding (subst)
-    open import Level
-
-
-    zap : ∀ {i : Size} {j : Size< i} {n m : ℕ} {var : Set} {Σ : Signature n m}
-        {f : Fin n} →
-        (g : Vec (Term {j} Σ var) (arF Σ f) → Term {i} Σ var) →
-        {xs ys : Vec (Term {j} Σ var) (arF Σ f)} → 
-        (xs ≡ ys) →
-        (g xs) ≡ (g ys)
-    zap g refl = refl
-
-
-    -- {-# NO_TERMINATION_CHECK #-}
-    -- mutual 
-    foov : ∀ {i : Size} {n m l var} {Σ : Signature n m} → (x : Vec (Term {i} Σ var) l) →
-      V.map (app' (σ-id {i})) x ≡ x
-    foow : ∀ {i : Size} {n m var} {Σ : Signature n m} → (t : Term {i} Σ var) →
-      app' (σ-id {i}) t ≡ t
-
-    foov [] = refl
-    foov (x ∷ xs)  = cong₂ (λ x₁ x₂ → x₁ ∷ x₂) (foow x) (foov xs)
-
-    
-    foow (VNode v) = refl
-    foow (FNode f xs) = cong (λ x → FNode f xs) (foov xs)
-
+    ex₆ {_} {α = α} {A = A} =
+      Lam refl refl
+        (Lp-m refl σ-id A (lemma-σ-id-atom A) [] refl [] (here refl))
 
