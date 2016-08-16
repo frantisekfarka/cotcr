@@ -210,6 +210,9 @@ app' {i} {j} σ (FNode {k} f fs) = FNode f fs
   -- FNode {k ⊔ˢ i} f (V.map (app {i} {k} σ) fs) 
 app' {i} {j} σ (VNode v) = subst σ v
 
+
+
+
 -- | ground substitution application
 gApp : {i : Size} →
   {n m : ℕ} → {Σ : Signature n m} → {var : Set}
@@ -224,6 +227,40 @@ appA σ (PNode p x) = PNode p (V.map (app σ) x)
 gAppA : {n m : ℕ} → {Σ : Signature n m} → {var : Set}
   → GSubst Σ var → At Σ var → GAt Σ
 gAppA σ (PNode p x) = PNode p (V.map (gApp σ) x)
+
+
+--
+-- σ-id is identity over a term
+--
+{-
+lemma-σ-id-tvec : ∀ {i : Size} {n m l var} {Σ : Signature n m} → (x : Vec (Term {i} Σ var) l) →
+V.map (app (σ-id {i})) x ≡ x
+
+--
+-- σ-id is identity over a vector of terms
+-- 
+lemma-σ-id-term : ∀ {i : Size} {n m var} {Σ : Signature n m} → (t : Term {i} Σ var) →
+app (σ-id {i}) t ≡ t
+
+
+lemma-σ-id-tvec [] = refl
+lemma-σ-id-tvec (x ∷ xs)  = cong₂ (λ x₁ x₂ → x₁ ∷ x₂) (lemma-σ-id-term x) (lemma-σ-id-tvec xs)
+
+    
+lemma-σ-id-term (VNode v) = refl
+lemma-σ-id-term (FNode f xs) = cong (λ x → FNode f x) (lemma-σ-id-tvec xs)
+-}
+    
+--
+-- σ-id is identity over a term
+--
+-- TODO size types, postulated for now
+--
+postulate lemma-σ-id-atom : ∀ {i : Size} {n m var} {Σ : Signature n m} → (A : At Σ var) → {-
+-}  (appA σ-id) A ≡ A
+--lemma-σ-id-atom (PNode p x) = cong (λ x′ → PNode p x′) (lemma-σ-id-tvec x )
+
+
 
 open import Data.List as Ls
 open import Data.List.All
