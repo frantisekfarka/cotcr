@@ -312,9 +312,9 @@ x ~ y = AppNode x y
   List var → PTerm PTΣ var → PTerm PTΣ var
 λ' x ∘ y = LamNode x y
 
-μ_∘_ : {n : ℕ} → {PTΣ : PTSignature n } → {var : Set} →
+ν_∘_ : {n : ℕ} → {PTΣ : PTSignature n } → {var : Set} →
   var → PTerm PTΣ var → PTerm PTΣ var
-μ x ∘ y = MuNode x y
+ν x ∘ y = MuNode x y
 
 ptApp : {n : ℕ} → {PTΣ : PTSignature n} → {var : Set} →
   PTerm PTΣ var → List (PTerm PTΣ var) → PTerm PTΣ var

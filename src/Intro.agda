@@ -107,7 +107,7 @@ module Ex₁ where
             , κ₂ ∷ [] ⇒ eq int
               ⟦ record { noExist = λ { () } } ⟧
 
-{-
+
 module Ex₂ where
 
   -- Example 2
@@ -148,6 +148,9 @@ module Ex₂ where
   int : Term Σ_EvenOdd ℕ
   int = FNode (suc (suc zero)) []
 
+  open import Data.Product
+  open import Data.List.Any
+  open import Relation.Binary.Core as RB hiding ( _⇒_ )  
 
   -- P_EvenOdd =
   -- eq(X), eq(evenList(X)) ⇒ eq(oddList(X))
@@ -155,19 +158,36 @@ module Ex₂ where
   -- ⇒ eq(int)
   P_EvenOdd : Program Σ_EvenOdd ℕ
   P_EvenOdd = record { prg
-    = {!!} -- ((eq X) ∷ ((eq (evenList X)) ∷ [])) ⇒ eq (oddList X)
-    ∷ {!!} -- (((eq X) ∷ ((eq (oddList X)) ∷ [])) ⇒ (eq (evenList X))
-    ∷ {!!} -- [] ⇒ (eq int)
+    = (((((eq X) ∷ (eq (evenList X)) ∷ []) ⇒ eq (oddList X))
+      , record { noExist = λ
+        { {.zero} (here (here refl)) → here (here refl)
+        ; {_} (here (there ()))
+        ; {.zero} (there (here (here (here refl)))) → here (here refl)
+        ; {_} (there (here (here (there ()))))
+        ; {_} (there (here (there ())))
+        ; {_} (there (there ()))
+        } } ))
+    ∷ ((((eq X) ∷ (eq (oddList X)) ∷ []) ⇒ eq (evenList X))
+      , record { noExist = λ
+        { {.zero} (here (here refl)) → here (here refl)
+        ; {_} (here (there ()))
+        ; {.zero} (there (here (here (here refl)))) → here (here refl)
+        ; {_} (there (here (here (there ()))))
+        ; {_} (there (here (there ())))
+        ; {_} (there (there ()))
+        } } )
+    ∷ (([] ⇒ eq int)
+      , record { noExist = λ { () } })
     ∷ []
     }
 
   PTΣ_EvenOdd : PTSignature 3
-  PTΣ_EvenOdd = {!!}
+  PTΣ_EvenOdd = record {}
 
   κ₁ κ₂ κ₃ : PTerm PTΣ_EvenOdd ℕ
-  κ₁ = PFNode zero {!!} -- []
-  κ₂ = PFNode (suc zero) {!!} -- []
-  κ₃ = PFNode (suc (suc zero)) {!!} --  []
+  κ₁ = AxNode zero
+  κ₂ = AxNode (suc zero)
+  κ₃ = AxNode (suc (suc zero))
 
   open import Data.List.Any
   open import Relation.Binary.Core as RB hiding ( _⇒_ )
@@ -180,37 +200,25 @@ module Ex₂ where
   Φ_EvenOdd = ((·
               , κ₁ ∷ (eq X ∷ eq (evenList X) ∷ []) ⇒ eq (oddList X)
                 ⟦ record { noExist = λ
-                  { {zero} (here (here refl)) → here (here refl)
-                  ; {zero} (here (there ()))
-                  ; {zero} (there (here (here (here refl)))) → here (here refl)
-                  ; {zero} (there (here (here (there ()))))
-                  ; {zero} (there (here (there ())))
-                  ; {zero} (there (there ()))
-                  ; {suc x} (here (here ()))
-                  ; {suc x} (here (there ()))
-                  ; {suc x} (there (here (here (here ()))))
-                  ; {suc x} (there (here (here (there ()))))
-                  ; {suc x} (there (here (there ())))
-                  ; {suc x} (there (there ()))
+                  { {.zero} (here (here refl)) → here (here refl)
+                  ; {_} (here (there ()))
+                  ; {.zero} (there (here (here (here refl)))) → here (here refl)
+                  ; {_} (there (here (here (there ()))))
+                  ; {_} (there (here (there ())))
+                  ; {_} (there (there ()))
                   }} ⟧)
               , κ₂ ∷ (eq X ∷ eq (oddList X) ∷ []) ⇒ eq (evenList X)
                 ⟦ record { noExist = λ
-                  { {zero} (here (here refl)) → here (here refl)
-                  ; {zero} (here (there ()))
-                  ; {zero} (there (here (here (here refl)))) → here (here refl)
-                  ; {zero} (there (here (here (there ()))))
-                  ; {zero} (there (here (there ())))
-                  ; {zero} (there (there ()))
-                  ; {suc x} (here (here ()))
-                  ; {suc x} (here (there ()))
-                  ; {suc x} (there (here (here (here ()))))
-                  ; {suc x} (there (here (here (there ()))))
-                  ; {suc x} (there (here (there ())))
-                  ; {suc x} (there (there ())) } } ⟧)
+                  { {.zero} (here (here refl)) → here (here refl)
+                  ; {_} (here (there ()))
+                  ; {.zero} (there (here (here (here refl)))) → here (here refl)
+                  ; {_} (there (here (here (there ()))))
+                  ; {_} (there (here (there ())))
+                  ; {_} (there (there ()))
+                  }} ⟧)
               , κ₃ ∷ [] ⇒ eq int
                 ⟦ record { noExist = λ { () } } ⟧
--}
-
+                
 -- Example 3
 --
 -- Φ_Bush =
