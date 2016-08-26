@@ -4,3 +4,9 @@ language: Haskell
 # Explicitly request container-based infrastructure.
 sudo: false
 
+
+before_install:
+    - cabal install agda
+
+
+install: true
