@@ -86,34 +86,6 @@ module CoTCR where
 
     κ₂-s : Fin 3
     κ₂-s = suc zero
-
-    Φ_EvenOddExt : AxEnv Σ_EvenOdd ℕ PTΣ_EvenOdd ℕ
-    Φ_EvenOddExt = Φ_EvenOdd , α ∷ [] ⇒ (eq (evenList int)) ⟦ record { noExist = λ { () }} ⟧
-
-    ex₇‴  : (Φ_EvenOddExt)
-      ⊢ ptApp κ₁ (κ₃ ∷ α ∷ []) ∷ ([] ⇒ (eq (oddList int)) )
-    ex₇‴ = Lp-m refl σ (eq (oddList X)) refl (κ₃ ∷ (α ∷ [])) refl
-      ( Lp-m refl σ (eq int) refl [] refl [] (there (here refl))
-      ∷  Lp-m refl σ (eq (evenList int)) refl [] refl [] (here refl)
-      ∷ []) (there (there (there (here refl))))
-      where
-        σ : Subst Σ_EvenOdd ℕ 
-        σ = record { subst = λ x → int }
-
-    ex₇⁗  : (Φ_EvenOddExt)
-      ⊢ (κ₂ ~ κ₃) ~ ((κ₁ ~ κ₃) ~ α) ∷ ([] ⇒ (eq (evenList int)) )
-    ex₇⁗ = Lp-m refl σ (eq (evenList X)) refl (κ₃ ∷ (κ₁ ~ κ₃) ~ α ∷ []) refl
-         ( Lp-m refl σ (eq int) refl [] refl [] (there (here refl))
-         ∷ (Lp-m refl σ (eq (oddList X)) refl (κ₃ ∷ α ∷ []) refl
-           ( Lp-m refl σ (eq int) refl [] refl [] (there (here refl))
-           ∷ Lp-m refl σ (eq (evenList int)) refl [] refl [] (here refl)
-           ∷ [])
-           (there (there (there (here refl))))
-         ∷ []))
-         (there (there (here refl)))
-      where
-        σ : Subst Σ_EvenOdd ℕ 
-        σ = record { subst = λ x → int }
         
     ex₇  : (Φ_EvenOdd)
       ⊢ ν α-v ∘ ((κ₂ ~ κ₃) ~ ((κ₁ ~ κ₃) ~ α)) ∷ ([] ⇒ (eq (evenList int)) )
@@ -133,22 +105,7 @@ module CoTCR where
       
 
 
-{-
-    ex₇ : (A : At Σ_EvenOdd ℕ) (α : ℕ)
---        {e : PTerm PTΣ_EvenOdd ℕ} →
-        (eᵢs : List (PTerm PTΣ_EvenOdd ℕ))
-        (κ : Fin 3) →
---        (wHNF : e ≡ ν α ∘ (ptApp (AxNode κ) eᵢs)) →
-        (Φ_EvenOdd , (PVNode α) ∷ ([] ⇒ A) ⟦ (record { noExist = λ { () } }) ⟧)
-          ⊢ ptApp (AxNode κ) eᵢs  ∷ ([] ⇒ A) →
-        Φ_EvenOdd ⊢ ν α ∘ ptApp (AxNode κ) eᵢs  ∷ ([] ⇒ A)
-    ex₇ .(appA σ A₁) α eᵢs κ (Lp-m refl σ A₁ refl eᵢs₁ wPt x x₁) =
-      Nu' {!!} {!!} {!!} {!!} {!!} {!!}
-    ex₇ A α eᵢs κ (Nu' .A α₁ κ₁ refl wPt x) = {!!}
--}
 
-
-{-
   open FixPoint
   open LFP
   open Program
@@ -179,7 +136,7 @@ module CoTCR where
         (toList  Bᵢs)
 
 
-  thm-ind-sound :
+  thm-coind-sound :
     ∀ {l m n} {Σ : Signature n m} → {var : Set}
     {PTΣ : PTSignature l} → {pVar : Set} 
     {Φ : AxEnv Σ var PTΣ pVar } →
@@ -187,6 +144,11 @@ module CoTCR where
     {e : PTerm PTΣ pVar} →
 
     Φ ⊢ e ∷ ([] ⇒ A') → (toPrg Φ) ⊨'' ([] ⇒ A')
+  thm-coind-sound (Lp-m refl σ A refl [] refl [] x₁) = {!!}
+  thm-coind-sound (Lp-m refl σ A refl eᵢs refl x₁ x₂) = {!!}
+  thm-coind-sound (Nu' A' α eᵢs κ refl refl x) = {!!}
+
+{-
   thm-ind-sound (Lp-m {Bᵢs = []} refl σ A refl [] _ [] wCH)
     = lemma-atohc (lemma-1-a-i (ae2a wCH (λ
       { {ch = [] ⇒ .A} refl → refl })))
@@ -208,11 +170,12 @@ module CoTCR where
     (Lam {Bᵢs = []} {[]} refl () _)
   thm-ind-sound {e = LamNode x e}
     (Lam {_} {_ ∷ βᵢs'} () _ _)
+-}
 
   map-vec' {eᵢs = []} {Bᵢs = []} {- _ -} [] = []
   map-vec' {eᵢs = _ ∷ _} {Bᵢs = _ ∷ _} {- f -} (px ∷ x)
-      = lemma-chtoa (thm-ind-sound px) ∷ (map-vec' x) 
--}
+      = lemma-chtoa (thm-coind-sound px) ∷ (map-vec' x) 
+
 
 {-
   module Ex₆ where
