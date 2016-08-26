@@ -1,0 +1,6 @@
+# Travis integration
+language: Haskell
+
+# Explicitly request container-based infrastructure.
+sudo: false
+
