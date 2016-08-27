@@ -6,7 +6,8 @@ sudo: false
 
 
 before_install:
-    - cabal install agda-2.4.2
+    - cabal install cabal-install
+    - cabal install agda-2.4.0
     - cabal install agda-stdlib
 
 
