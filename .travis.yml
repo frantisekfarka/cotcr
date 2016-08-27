@@ -7,7 +7,10 @@ sudo: false
 
 before_install:
     - export PATH=/home/travis/.cabal/bin/:$PATH
-    - cabal --verbose=3 install cabal-install
+    - cabal install cabal-install-1.22.0
+    - hash -r
+    - cabal install happy
+    - hash -r
     - cabal install agda
     - cabal install agda-stdlib
 
