@@ -18,4 +18,5 @@ after_install:
     - make doc
 
 
-after_failure: "cat /home/travis/.cabal/logs/cabal-install-1.24.0.0.log"
+after_failure:
+    - cat /home/travis/.cabal/logs/cabal-install-1.24.0.0.log
