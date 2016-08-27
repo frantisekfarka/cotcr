@@ -6,8 +6,9 @@ sudo: false
 
 
 before_install:
-    - cabal install cabal-install-1.22.0.0
-    - cabal install agda-2.4.0
+    - export PATH=/home/travis/.cabal/bin/:$PATH
+    - cabal --verbose=3 install cabal-install
+    - cabal install agda
     - cabal install agda-stdlib
 
 
