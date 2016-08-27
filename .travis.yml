@@ -6,7 +6,7 @@ sudo: false
 
 
 before_install:
-    - cabal install cabal-install
+    - cabal install cabal-install-1.22
     - cabal install agda-2.4.0
     - cabal install agda-stdlib
 
@@ -17,6 +17,3 @@ install: true
 after_install:
     - make doc
 
-
-after_failure:
-    - cat /home/travis/.cabal/logs/cabal-install-1.24.0.0.log
