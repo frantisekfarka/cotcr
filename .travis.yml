@@ -6,7 +6,12 @@ sudo: false
 
 
 before_install:
-    - cabal install agda
+    - cabal install agda-2.4
+    - cabal install agda-stdlib
 
 
 install: true
+
+
+after_install:
+    - make doc
