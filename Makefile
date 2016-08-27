@@ -10,7 +10,7 @@ doc :
 	$(GIT) checkout gh-pages
 	$(GIT) checkout master -- src
 	$(AGDA) --html -i $(SRC) -i $(STDLIB) src/cotcr.agda
-	$(GIT) add html/*agda
+	$(GIT) add html
 	$(GIT) commit -m'auto-generated GH-pages doc'
 	$(GIT) checkout -f master
 
