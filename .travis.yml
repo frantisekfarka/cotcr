@@ -7,13 +7,16 @@ sudo: false
 
 before_install:
     - export PATH=/home/travis/.cabal/bin/:$PATH
-    - cabal install --dependencies-only cabal-install
-    - cabal --verbose=3 install cabal-install
+    - cabal install --dependencies-only cabal-install-1.24.0.0
+    - cabal install cabal-install-1.24.0.0
     - hash -r && cabal --version
     - cabal install alex happy
     - hash -r && alex --version && happy --version
-    - cabal install agda
-    - cabal install agda-stdlib
+    - cabal install agda-2.5.1.1
+    - mkdir ~/.agda
+    - wget -nv https://github.com/agda/agda-stdlib/archive/v0.12.tar.gz
+    - tar xzf v0.12.tar.gz -C ~/.agda
+    - echo ~/.agda/agda-stdlib-0.12/standard-library.agda-lib >> ~/.agda/libraries
 
 
 install: true
