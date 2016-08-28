@@ -7,7 +7,7 @@ sudo: false
 
 before_install:
     - export PATH=/home/travis/.cabal/bin/:$PATH
-    - cabal install cabal-install-1.22.9.0
+    - cabal --verbose=3 install cabal-install
     - hash -r && cabal --version
     - cabal install alex happy
     - hash -r && alex --version && happy --version
