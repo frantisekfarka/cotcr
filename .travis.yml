@@ -7,6 +7,7 @@ sudo: false
 
 before_install:
     - export PATH=/home/travis/.cabal/bin/:$PATH
+    - cabal install --dependencies-only cabal-install
     - cabal --verbose=3 install cabal-install
     - hash -r && cabal --version
     - cabal install alex happy
