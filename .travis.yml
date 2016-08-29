@@ -19,7 +19,7 @@ before_install:
     - echo ~/.agda/agda-stdlib-0.12/standard-library.agda-lib >> ~/.agda/libraries
 
 
-install: true
+install: false
 
 
 after_install:
