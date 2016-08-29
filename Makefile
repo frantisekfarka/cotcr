@@ -5,6 +5,7 @@ AGDA=agda
 GIT=git
 SRC=src
 STDLIB=standard-library
+DEPLOY_KEY=travis_id_rsa
 
 configure:
 	$(GIT) config user.name "Travis CI"
@@ -20,6 +21,16 @@ doc :	configure
 	$(GIT) add html
 	$(GIT) commit -m'auto-generated GH-pages doc'
 	$(GIT) checkout -f master
+	ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
+	ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
+	ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+	ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+	openssl aes-256-cbc -K $(ENCRYPTED_KEY) -iv $(ENCRYPTED_IV) -in $(DEPLOY_KEY).enc -out $(DEPLOY_KEY) -d
+	chmod 600 $(DEPLOY_KEY)
+	eval `ssh-agent -s`
+	ssh-add $(DEPLOY_KEY)
+	git push origin gh-pages
+
 
 
 

@@ -4,6 +4,11 @@ language: Haskell
 # Explicitly request container-based infrastructure.
 sudo: false
 
+env:
+      global:
+          - ENCRYPTION_LABEL: "57579b36e4b4"
+          - COMMIT_AUTHOR_EMAIL: "frantisek@farka.eu"
+
 
 before_install:
     - export PATH=/home/travis/.cabal/bin/:$PATH
