@@ -15,6 +15,7 @@ doc :	configure
 	$(GIT) fetch origin gh-pages
 	$(GIT) checkout gh-pages
 	$(GIT) checkout master -- src
+	echo "-- commit:  $(TRAVIS_COMMIT)" >> src/cotcr.agda
 	$(AGDA) --html -i $(SRC) -l $(STDLIB) src/cotcr.agda
 	$(GIT) add html
 	$(GIT) commit -m'auto-generated GH-pages doc'
