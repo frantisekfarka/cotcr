@@ -19,11 +19,11 @@ before_install:
     - echo ~/.agda/agda-stdlib-0.12/standard-library.agda-lib >> ~/.agda/libraries
 
 
-install:
-    - echo "install step"
-    - true
+install: true
 
 
-after_install:
+script: true
+
+after_success:
     - make doc
 
