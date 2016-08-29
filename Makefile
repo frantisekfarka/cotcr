@@ -8,7 +8,7 @@ STDLIB=standard-library
 
 configure:
 	$(GIT) config user.name "Travis CI"
-	$(GOT) config user.email "$COMMIT_AUTHOR_EMAIL"
+	$(GIT) config user.email "$COMMIT_AUTHOR_EMAIL"
 
 doc :	configure
 	$(GIT) remote set-branches --add origin gh-pages
