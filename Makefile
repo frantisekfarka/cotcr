@@ -20,7 +20,6 @@ doc :	configure
 	$(AGDA) --html -i $(SRC) -l $(STDLIB) src/cotcr.agda
 	$(GIT) add html
 	$(GIT) commit -m'auto-generated GH-pages doc'
-	$(GIT) checkout -f master
 	ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
 	ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
 	ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
@@ -29,7 +28,8 @@ doc :	configure
 	chmod 600 $(DEPLOY_KEY)
 	eval `ssh-agent -s`
 	ssh-add $(DEPLOY_KEY)
-	git push origin gh-pages
+	$(GIT) push origin gh-pages
+	$(GIT) checkout -f master
 
 
 
