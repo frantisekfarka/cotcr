@@ -16,16 +16,14 @@ cache:
 
 before_install:
     - export PATH=$HOME/.cabal/bin/:/usr/local/ghc/$(ghc_find )/bin/:$PATH
-    - echo $PATH
-    - cat $HOME/.cabal/world
+    - ls $HOME/.ghc/x86_64-linux-7.6.3/package.conf.d/
     - cabal update
-    - cabal install --dependencies-only cabal-install-1.24.0.0
     - cabal install --dependencies-only cabal-install-1.24.0.0
     - cabal install cabal-install-1.24.0.0
     - hash -r && cabal --version
     - cabal install alex happy
     - hash -r && alex --version && happy --version
-    - #cabal install agda-2.5.1.1
+    - cabal install agda-2.5.1.1
     - mkdir ~/.agda
     - wget -nv https://github.com/agda/agda-stdlib/archive/v0.12.tar.gz
     - tar xzf v0.12.tar.gz -C ~/.agda
