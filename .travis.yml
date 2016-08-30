@@ -16,8 +16,9 @@ cache:
 before_install:
     - export PATH=$HOME/.cabal/bin/:/usr/local/ghc/$(ghc_find )/bin/:$PATH
     - echo $PATH
-    - ls -al $HOME/.cabal/packages/hackage.haskell.org/
+    - cat $HOME/.cabal/world
     - cabal update
+    - cabal install --dependencies-only cabal-install-1.24.0.0
     - cabal install --dependencies-only cabal-install-1.24.0.0
     - cabal install cabal-install-1.24.0.0
     - hash -r && cabal --version
