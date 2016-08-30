@@ -12,6 +12,7 @@ env:
 cache:
       directories:
             - $HOME/.cabal
+            - $HOME/.ghc
 
 before_install:
     - export PATH=$HOME/.cabal/bin/:/usr/local/ghc/$(ghc_find )/bin/:$PATH
