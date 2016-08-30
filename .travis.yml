@@ -22,7 +22,7 @@ before_install:
     - hash -r && cabal --version
     - cabal install alex happy
     - hash -r && alex --version && happy --version
-    - cabal install agda-2.5.1.1
+    - #cabal install agda-2.5.1.1
     - mkdir ~/.agda
     - wget -nv https://github.com/agda/agda-stdlib/archive/v0.12.tar.gz
     - tar xzf v0.12.tar.gz -C ~/.agda
@@ -35,5 +35,5 @@ install: true
 script: true
 
 after_success:
-    - make doc
+    - #make doc
 
