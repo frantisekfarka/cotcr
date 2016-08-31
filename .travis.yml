@@ -35,5 +35,5 @@ install: true
 script: true
 
 after_success:
-    - #make doc
+    - make doc
 
