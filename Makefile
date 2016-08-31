@@ -27,7 +27,7 @@ doc :	configure
 	#openssl aes-256-cbc -K $(ENCRYPTED_KEY) -iv $(ENCRYPTED_IV) -in $(DEPLOY_KEY).enc -out $(DEPLOY_KEY) -d
 	openssl aes-256-cbc -K $(encrypted_57579b36e4b4_key) -iv $(encrypted_57579b36e4b4_iv) -in $(DEPLOY_KEY).enc -out $(DEPLOY_KEY) -d
 	chmod 600 $(DEPLOY_KEY)
-	ssh-agent -s | sh -s
+	echo ${eval `ssh-agent -s`}
 	echo $(SSH_AUTH_SOCK)
 	echo $(SSH_AGENT_PID)
 	ssh-add $(DEPLOY_KEY)
