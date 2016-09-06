@@ -28,6 +28,6 @@ doc :	configure
 	openssl aes-256-cbc -K $(encrypted_57579b36e4b4_key) -iv $(encrypted_57579b36e4b4_iv) -in $(DEPLOY_KEY).enc -out $(DEPLOY_KEY) -d
 	chmod 600 $(DEPLOY_KEY)
 	sh -c 'eval $$(ssh-agent -s); ssh-add $(DEPLOY_KEY)'
-	$(GIT) push origin gh-pages
+	$(GIT) push git@github.com:frantisekfarka/cotcr.git gh-pages
 	$(GIT) checkout -f master
 
