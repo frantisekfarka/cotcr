@@ -20,7 +20,7 @@ before_install:
     - cabal install --dependencies-only cabal-install-1.24.0.0
     - cabal install cabal-install-1.24.0.0
     - hash -r && cabal --version
-    - cabal install alex happy
+    - cabal install alex-3.1.0 happy
     - hash -r && alex --version && happy --version
     - cabal install agda-2.5.1.1
     - mkdir ~/.agda
