@@ -3,7 +3,7 @@ module Prelim.Syntax where
 open import Data.Nat
 open import Data.Fin
 
--- A first-order signature
+-- | A first-order signature
 record Signature (n : ℕ) (m : ℕ) : Set where
   field
     -- function symbols are encoded as numbers in Fin n
