@@ -8,6 +8,8 @@ open import Data.Nat
 open import Data.Vec
 open import Data.List
 
+
+-- TODO factor out helper
 -- helper
 _,'_ : {A : Set} → A → A → Vec A 2
 x ,' y = x ∷ (y ∷ [])
@@ -15,6 +17,18 @@ x ,' y = x ∷ (y ∷ [])
 module Ex₁ where
 
   -- Example 1
+  --
+  -- Assume the following Haskell definition:
+  --
+  -- class Eq x where
+  --   eq : : Eq x ⇒ x → x → Bool
+  --
+  -- instance ( Eq x , Eq y ) ⇒ Eq (x , y ) where
+  --   eq ( x1 , y1 ) ( x2 , y2 ) = eq x1 x2 && eq y1 y2
+  --
+  -- instance Eq Int where
+  --   eq x y = primtiveIntEq x y
+  --
   --
   -- The signature of Φ_Pair has 2 function and 1 predicate symbols
   --
@@ -46,10 +60,13 @@ module Ex₁ where
 
   open import Data.Product
   open import Data.List.Any
-  open import Relation.Binary.Core as RB hiding ( _⇒_ )  
-  -- P_Pair =
+  open import Relation.Binary.Core as RB hiding ( _⇒_ )
+
+  -- The program P_Pair that corresponds to above Haskell
+  -- definition:
+  --
   -- eq(X), eq(Y) ⇒ eq(pair(X,Y))
-  -- ⇒ eq(int)
+  --              ⇒ eq(int)
   --
   P_Pair : Program Σ_Pair ℕ
   P_Pair = record { prg
@@ -81,9 +98,10 @@ module Ex₁ where
   κ₁ = AxNode zero
   κ₂ = AxNode (suc zero)
 
-  -- Φ_Pair =
+  -- And corresponding axiom environment Φ_Pair
+  -- 
   -- κ₁ : eq(X), eq(Y) ⇒ eq(pair(X,Y))
-  -- κ₂ : ⇒ eq(int)
+  -- κ₂ :              ⇒ eq(int)
   --
   Φ_Pair : AxEnv Σ_Pair ℕ PTΣ_Pair ℕ
   Φ_Pair = (·
@@ -112,6 +130,20 @@ module Ex₂ where
 
   -- Example 2
   --
+  -- Assume the following Haskell definiton
+  -- 
+  -- data OddList a   = OCons a ( EvenList a )
+  -- data EvenList a  = Nil | ECons a ( OddList a )
+  --
+  -- instance ( Eq a , Eq ( EvenList a ) ) ⇒ Eq ( OddList a ) where
+  --   eq ( OCons x xs ) ( OCons y ys ) = eq x y && eq xs ys
+  --
+  -- instance ( Eq a , Eq ( OddList a ) ) ⇒ Eq ( EvenList a ) where
+  --   eq Nil            Nil            = True
+  --   eq ( ECons x xs ) ( ECons y ys ) = eq x y &&
+  --   eq _               _             = False
+  -- 
+  -- 
   -- The signature of Φ_EvenOdd has 3 function and 1 predicate symbols
   --
   -- Function symbols
@@ -152,10 +184,12 @@ module Ex₂ where
   open import Data.List.Any
   open import Relation.Binary.Core as RB hiding ( _⇒_ )  
 
-  -- P_EvenOdd =
+  -- The program P_EvenOdd that corresponds to the above Haskell definition:
+  --
   -- eq(X), eq(evenList(X)) ⇒ eq(oddList(X))
-  -- eq(X), eq(oddList(X)) ⇒ eq(evenList(X))
-  -- ⇒ eq(int)
+  -- eq(X), eq(oddList(X))  ⇒ eq(evenList(X))
+  --                        ⇒ eq(int)
+  
   P_EvenOdd : Program Σ_EvenOdd ℕ
   P_EvenOdd = record { prg
     = (((((eq X) ∷ (eq (evenList X)) ∷ []) ⇒ eq (oddList X))
@@ -192,10 +226,12 @@ module Ex₂ where
   open import Data.List.Any
   open import Relation.Binary.Core as RB hiding ( _⇒_ )
 
-  -- Φ_EvenOdd =
+  -- Abd the correspondign axiom environment  Φ_EvenOdd
+  --
   -- κ₁ : eq(X), eq(evenList(X)) ⇒ eq(oddList(X))
-  -- κ₂ : eq(X), eq(oddList(X)) ⇒ eq(evenList(X))
-  -- κ₃ : ⇒ eq(int)
+  -- κ₂ : eq(X), eq(oddList(X))  ⇒ eq(evenList(X))
+  -- κ₃ :                        ⇒ eq(int)
+  --
   Φ_EvenOdd : AxEnv Σ_EvenOdd ℕ PTΣ_EvenOdd ℕ
   Φ_EvenOdd = ((·
               , κ₁ ∷ (eq X ∷ eq (evenList X) ∷ []) ⇒ eq (oddList X)
