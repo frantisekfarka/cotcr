@@ -94,7 +94,7 @@ module TCRes where
     {A' : At Σ var} →
     {e : PTerm PTΣ pVar} →
 
-    Φ ⊢ e ∷ A' → Φ ⊨ A'
+    Φ ⊢ e ∷ A' → toPrg Φ ⊨ A'
 
   thm-ind-sound (Lp-m {Bᵢs = []} _ A refl [] _ [] wCH)
     = lemma-1-a-i 
@@ -118,7 +118,7 @@ module TCRes where
         {Bᵢs : Vec (At Σ var) k} →
         All (λ { (eᵢ , Bᵢ) → Φ ⊢ eᵢ ∷ appA σ Bᵢ } )
           (toList (V.zip eᵢs Bᵢs)) →
-        All (λ { Bᵢ → Φ ⊨ appA σ Bᵢ})
+        All (λ { Bᵢ → toPrg Φ ⊨ appA σ Bᵢ})
           (toList  Bᵢs)
       map-vec' {eᵢs = []} {Bᵢs = []} [] = []
       map-vec' {eᵢs = _ ∷ _} {Bᵢs = _ ∷ _} (px ∷ x)
@@ -265,7 +265,7 @@ module TCResLam where
         {Bᵢs : Vec (At Σ var) k} →
         All (λ { (eᵢ , Bᵢ) → Φ ⊢ eᵢ ∷ ([] ⇒ appA σ Bᵢ) } )
           (toList (V.zip eᵢs Bᵢs)) →
-        All (λ { Bᵢ → Φ ⊨ (appA σ Bᵢ)})
+        All (λ { Bᵢ → (toPrg Φ) ⊨ (appA σ Bᵢ)})
           (toList  Bᵢs)
       map-vec' {eᵢs = []} {Bᵢs = []} [] = []
       map-vec' {eᵢs = _ ∷ _} {Bᵢs = _ ∷ _} (px ∷ x)
