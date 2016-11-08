@@ -3,7 +3,7 @@ module Prelim.Syntax where
 open import Data.Nat
 open import Data.Fin
 
--- | A first-order signature
+-- A first-order signature
 record Signature (n : ℕ) (m : ℕ) : Set where
   field
     -- function symbols are encoded as numbers in Fin n
@@ -290,17 +290,21 @@ open PTSignature public
 -- | A first-order term
 --   in a signature Σ and variables var
 --
-data PTerm {i : Size}
+data PTerm -- {i : Size}
   {n : ℕ}
   (PTΣ : PTSignature n) (var : Set) : Set where
-   AxNode : {j : Size< i} → (f : Fin n) →
-     PTerm {i} PTΣ var
-   AppNode : {j k : Size< i} → (PTerm {k} PTΣ var) →
-     PTerm {j} PTΣ var →
-     PTerm {i} PTΣ var
-   PVNode :  (v : var) → PTerm {i} PTΣ var
-   LamNode : List var → PTerm {i} PTΣ var → PTerm {i} PTΣ var
-   MuNode : var → PTerm {i} PTΣ var → PTerm {i} PTΣ var
+   AxNode :
+     (f : Fin n) →
+     PTerm {- i -} PTΣ var
+   AppNode : -- {j k : Size< i} →
+     (PTerm {-k-} PTΣ var) →
+     PTerm {-j-} PTΣ var →
+     PTerm {-i-} PTΣ var
+   PVNode :  (v : var) → PTerm {-i-} PTΣ var
+   LamNode : -- {j : Size< i} →
+     List var → PTerm {-j-} PTΣ var → PTerm {-i-} PTΣ var
+   MuNode : -- {j : Size< i} →
+     var → PTerm {-j-} PTΣ var → PTerm {-i-} PTΣ var
 
 
 -- helpers
@@ -320,3 +324,6 @@ ptApp : {n : ℕ} → {PTΣ : PTSignature n} → {var : Set} →
   PTerm PTΣ var → List (PTerm PTΣ var) → PTerm PTΣ var
 ptApp t [] = t
 ptApp t (x ∷ xs) = ptApp (AppNode t x) xs
+
+-- ptApp (AxNode κ) t₁ ∷ t₂ ∷ ... = ((AppNode (AppNode (AxNode κ) t₁) t₂) ... )
+

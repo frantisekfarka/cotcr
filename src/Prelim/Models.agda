@@ -1,6 +1,5 @@
 module Prelim.Models where
 
-
 open import Data.List as Lst
 open import Data.List.Any as LAn
 open import Data.List.All as LAl
@@ -33,7 +32,7 @@ open AtIsGInstOf
 open CHIsGInstOf
 
 -- ground instance of NE-CH resulting from At
-
+{-
 foo : {n m : ℕ} → {Σ : Signature n m} → {var : Set} →
   (gh : GAt Σ) →
   (ch : CH Σ var) →
@@ -61,7 +60,7 @@ foo gh ((chb₁ ∷ chb) CH.⇒ h) neCh wGh
       { s = s wGh
       ; eq = refl
       }) ∷ eqB wGch }
-
+-}
 
 -- Semantic operator
 -- 
@@ -88,6 +87,7 @@ record GFP {A : Set} (F : Pred A L.zero → Pred A L.zero) : Set₁ where
   field
     gfp : FixPoint F
     wGfp : (fp' : FixPoint F) → fp fp' ⊆ fp gfp
+open GFP
 
 postulate M' : {n m : ℕ} → {Σ : Signature n m} → {var : Set} → (P : Program Σ var) → GFP (T P)
 
@@ -101,15 +101,21 @@ record AtValid {n m : ℕ} {Σ : Signature n m} {var : Set}
     wVal : ∀ {σ : GSubst Σ var} →
       (gAppA σ at ∈ I)
 
--- Shorthand for AxEnv
--- @TODO  move to Res?
-_⊨_ : ∀ {l m n} {Σ : Signature n m} → {var : Set}
-  {PTΣ : PTSignature l} → {pVar : Set} 
+-- Shorthand for Program
+_⊨_ : ∀ {m n} {Σ : Signature n m} → {var : Set}
 
-  (Φ : AxEnv Σ var PTΣ pVar ) →
+  (P : Program Σ var ) →
   (A : At Σ var) →
   Set₁
-Φ ⊨ A = AtValid (fp (lfp (M (toPrg Φ)))) A
+P ⊨ A = AtValid (fp (lfp (M P))) A
+
+-- Shorthand for Program
+_⊨coind_ : ∀ {m n} {Σ : Signature n m} → {var : Set}
+
+  (P : Program Σ var ) →
+  (A : At Σ var) →
+  Set₁
+P ⊨coind A = AtValid (fp (gfp (M' P))) A
 
 --
 -- Validity of a formula
@@ -125,18 +131,7 @@ open AtValid
 open CHValid
 
 
--- Shorthand for AxEnv
--- @TODO  move to Res?
-_⊨'_ : ∀ {l m n} {Σ : Signature n m} → {var : Set}
-  {PTΣ : PTSignature l} → {pVar : Set} 
-
-  (Φ : AxEnv Σ var PTΣ pVar ) →
-  (A : CH Σ var) →
-  Set₁
-Φ ⊨' A = CHValid (fp (lfp (M (toPrg Φ)))) A
-
 -- Shorthand for Program
--- @TODO  move to Res?
 _⊨''_ : ∀ {m n} {Σ : Signature n m} → {var : Set} →
 
   (Φ : Program Σ var) →
@@ -144,27 +139,59 @@ _⊨''_ : ∀ {m n} {Σ : Signature n m} → {var : Set} →
   Set₁
 Φ ⊨'' H = CHValid (fp (lfp (M Φ))) H
 
+-- Shorthand for Program, coind
+-- @TODO  move to Res?
+_⊨''coind_ : ∀ {m n} {Σ : Signature n m} → {var : Set} →
+
+  (Φ : Program Σ var) →
+  (H : CH Σ var) →
+  Set₁
+Φ ⊨''coind H = CHValid (fp (gfp (M' Φ))) H
+
 
 
 
 open Program
 
 --
--- Lemma 1, inductive part
+-- Lemma 1
 --
--- a/
+-- a/ inductive part
+--
 postulate lemma-1-a-i : {n m : ℕ} {-
 -} {Σ : Signature n m} {var : Set} {-
 -} {P : Program Σ var} {B : At Σ var} {-
 -} {σ : Subst Σ var} → {- 
 -} Any  ( λ { (ch , wNECh) → ch ≡ ([] CH.⇒ B) }) (prg P) → AtValid (fp (lfp (M P))) (appA σ B)
 
+--
+-- a/ coinductive part
+--
+postulate lemma-1-a-c : {n m : ℕ} {-
+-} {Σ : Signature n m} {var : Set} {-
+-} {P : Program Σ var} {B : At Σ var} {-
+-} {σ : Subst Σ var} → {- 
+-} Any  ( λ { (ch , wNECh) → ch ≡ ([] CH.⇒ B) }) (prg P) → AtValid (fp (gfp (M' P))) (appA σ B)
+
+--
+-- b/ inductive part
+--
 postulate lemma-1-b-i : {n m : ℕ} {-
 -} {Σ : Signature n m} {var : Set} {-
 -} {P : Program Σ var} {A : At Σ var} {Bs : List (At Σ var)} {-
 -} {σ : Subst Σ var} → {-
 -} All (λ Bᵢ → AtValid (fp (lfp (M P))) (appA σ Bᵢ)) Bs → {-
 -} Any  ( λ { (ch , wNECh) → ch ≡ (Bs CH.⇒ A) }) (prg P) → AtValid (fp (lfp (M P))) (appA σ A)
+
+--
+-- b/ coinductive part
+--
+postulate lemma-1-b-c : {n m : ℕ} {-
+-} {Σ : Signature n m} {var : Set} {-
+-} {P : Program Σ var} {A : At Σ var} {Bs : List (At Σ var)} {-
+-} {σ : Subst Σ var} → {-
+-} All (λ Bᵢ → AtValid (fp (gfp (M' P))) (appA σ Bᵢ)) Bs → {-
+-} Any  ( λ { (ch , wNECh) → ch ≡ (Bs CH.⇒ A) }) (prg P) → AtValid (fp (gfp (M' P))) (appA σ A)
 
 
 --
@@ -184,11 +211,23 @@ postulate lemma-atohc : {m n : ℕ} {-
 -} AtValid (fp (lfp (M P))) A → {-
 -} CHValid (fp (lfp (M P))) ([] CH.⇒ A) 
 
+postulate lemma-atohc' : {m n : ℕ} {-
+-} {Σ : Signature m n} {var : Set} {-
+-} {P : Program Σ var} {A : At Σ var} → {-
+-} AtValid (fp (gfp (M' P))) A → {-
+-} CHValid (fp (gfp (M' P))) ([] CH.⇒ A) 
+
 postulate lemma-chtoa : {m n : ℕ} {-
 -} {Σ : Signature m n} {var : Set} {-
 -} {P : Program Σ var} {A : At Σ var} → {-
 -} CHValid (fp (lfp (M P))) ([] CH.⇒ A) → {-
 -} AtValid (fp (lfp (M P))) (A) 
+
+postulate lemma-chtoa' : {m n : ℕ} {-
+-} {Σ : Signature m n} {var : Set} {-
+-} {P : Program Σ var} {A : At Σ var} → {-
+-} CHValid (fp (gfp (M' P))) ([] CH.⇒ A) → {-
+-} AtValid (fp (gfp (M' P))) (A) 
 
 
 postulate lemma-2 : {n m : ℕ} {-
@@ -197,3 +236,4 @@ postulate lemma-2 : {n m : ℕ} {-
 -} {Bs : List (At Σ var)} → {-
 -} (extPrg P (Lst.map (λ B → (([] CH.⇒ B) , record { noExist = λ { () } } ) ) Bs)) ⊨'' ([] CH.⇒ A) {-
 -} → P ⊨'' ([] CH.⇒ A)
+
