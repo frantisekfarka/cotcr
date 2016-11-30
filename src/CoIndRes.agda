@@ -114,8 +114,6 @@ module CoTCR where
     
   open import Prelim.Res
 
-
-
   open import Data.List.All.Properties
   open import Relation.Binary.PropositionalEquality
 
@@ -314,6 +312,48 @@ module CoTCR where
       All (λ { Bᵢ → (toPrg Φ) ⊨coind (appA σ Bᵢ)})
         (toList  Bᵢs)
 
+  map-vec'' : ∀ {k l m n} { var : Set} {pVar : Set} →
+      {Σ : Signature m n}
+      {σ : Subst Σ var}
+--      {κ' : Fin n}
+      {PTΣ : PTSignature l}
+      {Φ : AxEnv Σ var PTΣ pVar} →
+      {eᵢs : Vec (PTerm PTΣ pVar) k} →
+      {Bᵢs : Vec (At Σ var) k} →
+      {α : pVar } →
+      (A : At Σ var ) →
+
+
+-- record
+--          { noExist =
+--              (λ { () }) Phi (MuNode α (ptApp (AxNode κ') (toList eᵢs₁)))
+--              ([] ⇒ appA σ A) (appA σ A) α (toList eᵢs₁) κ' refl refl
+              
+      -- thm-coind-sound made explicit
+      -- ({A' : At Σ var} {e : PTerm PTΣ pVar} →
+      -- Φ ⊢ e ∷ ([] ⇒ A') → toPrg Φ ⊨'' ([] ⇒ A')) →
+      --All (λ eᵢBᵢ → (Φ , PVNode α ∷ [] ⇒ appA σ A ⟦ record { noExist = λ { () }  } ⟧)
+      --  ⊢ proj₁ eᵢBᵢ ∷ ([] ⇒ appA σ (proj₂ eᵢBᵢ)))
+
+        -- (λ { (eᵢ , Bᵢ) → {!!}})
+
+      -- (extEnv Φ  (({!!} , (([] ⇒ A) , record { noExist = {!!} })) ∷ [])) ⊢ eᵢ ∷ ([] ⇒ appA σ Bᵢ) } )
+      --  (toList (V.replicate _,_ ⊛ eᵢs ⊛ Bᵢs)) →
+
+      All (λ eᵢBᵢ → (Φ , PVNode α ∷ [] ⇒ appA σ A ⟦
+          record
+          { noExist = λ { () }
+          }
+          ⟧)
+         ⊢ proj₁ eᵢBᵢ ∷ ([] ⇒ appA σ (proj₂ eᵢBᵢ)))
+      (toList (V.replicate _,_ ⊛ eᵢs ⊛ Bᵢs))
+
+      --All (λ { Bᵢ → (toPrg (extEnv Φ {!!})) ⊨coind (appA σ Bᵢ)})
+      --  (toList  Bᵢs)
+      → ⊥
+  map-vec'' = {!!}
+
+
 
 -- TODO
 
@@ -330,7 +370,7 @@ module CoTCR where
 -} → (σ : Subst Σ var) {-
 -} → All (λ {Bᵢ → extPrg P ((([] ⇒ A) , (record { noExist = λ { () }})) ∷ []) {-
 -}                ⊨coind (appA σ Bᵢ)}) Bs {-
--} → P ⊨''coind ([] CH.⇒ appA σ A)
+-} → P ⊨coind (appA σ A)
 
   thm-coind-sound :
     ∀ {l m n} {Σ : Signature n m} → {var : Set}
@@ -354,15 +394,21 @@ module CoTCR where
     with lemma-AppNode2 (AxNode κ) (AxNode κ') eᵢs (toList eᵢs₁) wPt
   thm-coind-sound (Nu' .(appA σ A) α eᵢs κ' refl refl (Lp-m {n'} {Bᵢs} {AxNode .κ'} refl σ A refl eᵢs₁ wPt wBᵢs wCH)) | refl
     with lemma-ptApp-eq (AxNode κ') eᵢs (toList eᵢs₁) wPt
-  thm-coind-sound (Nu' .(appA σ A) α .(toList eᵢs₁) κ' refl refl (Lp-m {n'} {Bᵢs} {AxNode .κ'} refl σ A refl eᵢs₁ refl wBᵢs wCH)) | refl | refl
-    = {!!}
+  thm-coind-sound {Φ = Phi} (Nu' .(appA σ A) α .(toList eᵢs₁) κ' refl refl (Lp-m {n'} {Bᵢs} {AxNode .κ'} refl σ A refl eᵢs₁ refl wBᵢs wCH)) | refl | refl
+    = lemma-atohc' (lemma-3 {Bs = toList Bᵢs} {P = toPrg Phi} {A}
+                   σ
+                   ( ⊥-elim (map-vec'' {σ = σ} {Φ = Phi} {eᵢs = eᵢs₁} {Bᵢs} {α} (A)
+                     (subst
+                       (λ {x → All
+                         (λ eᵢBᵢ' → (Phi , PVNode α ∷ [] ⇒ (appA σ A) ⟦ record { noExist = {!x!} } ⟧) ⊢ proj₁ eᵢBᵢ' ∷ ([] ⇒ appA σ (proj₂ eᵢBᵢ')))
+                         ((toList (V.replicate _,_ ⊛ eᵢs₁ ⊛ Bᵢs))) })
+                       refl
+                       wBᵢs)))
+                   )
   
   thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {e = AppNode e e₁} refl σ A refl eᵢs₁ wPt wBᵢs wCH)) = {!!}
 
-
---  with lemma-AppNode2 (AxNode κ) (AppNode e e₁) eᵢs (toList eᵢs₁) wPt
---  ... | z = {!!}
-  
+ 
   thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {e = PVNode v} refl σ A refl eᵢs₁ wPt wBᵢs wCH))
     with lemma-AppNode2 (AxNode κ) (PVNode v) eᵢs (toList eᵢs₁) wPt
   thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {n'} {Bᵢs} {PVNode v} refl σ A refl eᵢs₁ wPt wBᵢs wCH)) | ()
@@ -372,41 +418,6 @@ module CoTCR where
   thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {e = MuNode x e} refl σ A refl eᵢs₁ wPt wBᵢs wCH))
     with lemma-AppNode2 (AxNode κ) (MuNode x e) eᵢs (toList eᵢs₁) wPt
   thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {n'} {Bᵢs} {MuNode x e} refl σ A refl eᵢs₁ wPt wBᵢs wCH)) | ()
-
-
-  {- {!lemma-3 σ ? (ae2a x₂ (λ {
-        {ch = .(toList Bᵢs) ⇒ .A} refl → refl
-      }))!}
-  -}
-
-  {- {!ae2a x₂ ((λ {
-      {ch =.(toList Bᵢs) ⇒ .A} refl → refl
-      })) !}-}
-    -- {!lemma-3 ? (ae2a x₂ (λ { {ch} refl → refl}))!}
-
-
-  -- to show : e ≡ pt
-  
-{-
-  thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {e = AxNode f} refl σ A refl eᵢs₁ wPt x₁ x₂)) = {!!}
-  thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {e = AppNode e e₁} refl σ A refl eᵢs₁ wPt x₁ x₂))
-    with lemma-AppNode4 (AxNode κ) eᵢs | lemma-AppNode4 (AppNode e e₁) (toList eᵢs₁) | cong head-symbol wPt
-  ... | u | v | z with trans (sym u) (trans z v)
-  ... | j = {!!}
-
-  thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {e = PVNode v} refl σ A refl eᵢs₁ wPt x₁ x₂))
-    with lemma-AppNode4 (AxNode κ) eᵢs | lemma-AppNode4 (PVNode v) (toList eᵢs₁) | cong head-symbol wPt
-  ... | u | v' | z with trans (sym u) (trans z v')
-  thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {n'} {Bᵢs} {PVNode v} refl σ A refl eᵢs₁ wPt x₁ x₂)) | u | v' | z | ()
-  thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {e = LamNode x e} refl σ A refl eᵢs₁ wPt x₁ x₂))
-    with lemma-AppNode4 (AxNode κ) eᵢs | lemma-AppNode4 (LamNode x e) (toList eᵢs₁) | cong head-symbol wPt
-  ... | u | v | z with trans (sym u) (trans z v)
-  thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {n'} {Bᵢs} {LamNode x e} refl σ A refl eᵢs₁ wPt x₁ x₂)) | u | v | z | ()
-  thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {e = MuNode x e} refl σ A refl eᵢs₁ wPt x₁ x₂))
-    with lemma-AppNode4 (AxNode κ) eᵢs | lemma-AppNode4 (MuNode x e) (toList eᵢs₁) | cong head-symbol wPt
-  ... | u | v | z with trans (sym u) (trans z v)
-  thm-coind-sound (Nu' .(appA σ A) α eᵢs κ refl refl (Lp-m {n'} {Bᵢs} {MuNode x e} refl σ A refl eᵢs₁ wPt x₁ x₂)) | u | v | z | ()
--}
 
   thm-coind-sound (Nu' .(PNode p x) α [] κ refl refl (Nu' (PNode p x) α₁ eᵢs₁ κ₁ refl () x₁))
   thm-coind-sound (Nu' .(PNode p x) α (eᵢ ∷ eᵢs) κ refl refl (Nu' (PNode p x) α₁ eᵢs₁ κ₁ refl wPt x₂)) with lemma-AppNode (AxNode κ) eᵢ eᵢs
